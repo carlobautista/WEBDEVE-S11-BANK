@@ -1,0 +1,56 @@
+.textLeft{
+	float: left;
+	padding: 5px;
+	padding-top: 10px;
+}
+
+.textRight{
+	float: right;
+	padding: 5px;
+	padding-top: 10px;
+}
+
+.loginInput{
+	float:left;
+	padding: 5px;
+	position: relative;
+}
+
+.inputBox{
+	width: 200px;
+	height: 26px;
+	border: 1px ;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+}
+
+.btn{
+	position: absolute;
+	right: 20px;
+	background-color: rgb(69,134,245);
+	border-radius: 2px;
+	float: right;
+	color: white;
+	padding: 5px;
+	border-top: 0;
+	margin: 5px
+}
+
+table{
+	margin-left:auto;
+	margin-right: auto;
+	margin-bottom:auto;
+	margin-top:auto;
+}
+
+#loginContainer{
+	position: relative;
+	clear: both;
+	border: 3px;
+	border-style: solid;
+	border-radius: 25px;
+	height: 230px;
+	width: 300px;
+	padding: 5px;
+	top: 150px;
+}
