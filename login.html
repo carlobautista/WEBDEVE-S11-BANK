@@ -3,6 +3,11 @@
 	<head>
 		<title>Login</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<script>
+			function login() {
+				location.href='./HomePage.html';
+			}
+		</script>
 	</head>
 	<body>
 		<center>
@@ -24,7 +29,9 @@
 						</table>
 					</form>
 				</div>
-				<div class = "btn">Login</div>
+				<div class = "btn">
+					<button onClick="login()" type="button" class="btn btn-default">Login</button>
+				</div>
 			</div>
 		</center>
 	</body>
