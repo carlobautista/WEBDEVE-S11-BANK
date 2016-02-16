@@ -3,6 +3,30 @@
 	padding: 5px;
 }
 
+td th{
+	margin-left:40px;
+}
+
+#account{
+	border: 1px;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+	border-radius: 8px;
+	border-collapse: separate;
+	width: 60%;
+	height: 130px;
+	margin-top: 10px;
+	padding-top: 30px;
+}
+
+#delete{
+	height: 30px;
+	width: 60px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
 #header{
 	font-style: Arial, sans-serif;
 	font-size: 15px;
@@ -54,13 +78,6 @@
 	float: right;
 	padding: 5px;
 	margin-top: 5px;
-}
-
-table{
-	margin-left:auto;
-	margin-right: auto;
-	margin-bottom:auto;
-	margin-top:auto;
 }
 
 #loginContainer{
