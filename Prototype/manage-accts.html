@@ -3,7 +3,10 @@
 	<head>
 		<title>Home Page</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<script src="jquery-2.1.1.js">
+			
+		</script>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -34,15 +37,46 @@
 					<a href="HomePage.html" class="list-group-item ">Home</a>
 					<a href="transaction-history.html" class="list-group-item">View Transaction History</a>
 					<a href="balance.html" class="list-group-item">View Balance</a>
-					<a href="fund-transfer.html" class="list-group-item active">Fund Transfer</a>
+					<a href="fund-transfer.html" class="list-group-item">Fund Transfer</a>
 					<a href="bills-pay.html" class="list-group-item">Bills Payment</a>
 					<a href="send-money.html" class="list-group-item">Send Money</a>
-					<a href="manage-accts.html" class="list-group-item">Manage Accounts</a>
+					<a href="manage-accts.html" class="list-group-item active">Manage Accounts</a>
 				</div>
 			</div>
 			<div id="content">
-				<h1>Fund Transfer</h1>
+				<h1>Manage Accounts</h1>
+				<script>
+					var acctName;
+					var acctNum;
+					var acctBal;
+					var accounts = [];
+					var i;
+					
+					function Account(acctName, acctNum){
+						this.acctName = acctName;
+						this.acctNum = acctNum;
+						this.acctBal = 0;
+					}
+					function initializeAccounts(){
+						acct1 = new Account("Carlo Bautista", 5484657920);
+						acct2 = new Account("Miguel Manalac", 9763249315);
+						
+						accounts.push(acct1);
+						accounts.push(acct2);
+					}
+					function displayAccounts(){
+						for(i = 0; i < accounts.length; i++){
+							query = "<div id=account><center><table><tr><th>Account Name: </th><td>"+accounts[i].acctName+"</td></tr><tr><th>Account Number: </th><td>"+accounts[i].acctNum+"</td></tr></table></center><button id='delete' type='button'>Delete</button></div>";
+							$('#content').append(query);
+						}
+					}
+					initializeAccounts();
+					displayAccounts();
+				</script>
 			</div>
 		</div>
+		
+		<script>
+		</script>
 	</body>
 </html>
