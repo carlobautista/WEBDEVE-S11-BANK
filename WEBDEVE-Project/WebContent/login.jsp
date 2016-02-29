@@ -10,10 +10,16 @@
 		<title>Login</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
 		<script>
 			function login() {
-				location.href='HomePage.jsp';
+				var otp = $("#OTP").val();
+				if( otp == 12345678){
+					alert("Login Successful");
+					location.href='HomePage.jsp';
+				}
+				else {
+					alert("Wrong OTP Please try again.")
+				}
 			}
 		</script>
 	</head>
@@ -48,7 +54,7 @@
 									<input type="password" name="password" class="loginMargin form-control" pattern="[a-zA-Z0-9\s]+" placeholder="Password" required>
 								</li>
 								<li>
-									<button onClick="login()" type="button" class="loginMargin btn btn-primary rightBtn">Login</button>
+									<button type="button" class="loginMargin btn btn-primary rightBtn" data-toggle="modal" data-target="#myModal">Login</button>
 								</li>
 							</ul>
 							</form>
@@ -234,8 +240,34 @@
 						</div>
 				</form>
 			</div>
+			
+		<!-- Modal for code confirmation -->
+		
+		<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">One-Time Password(OTP)</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>To further ensure the security of your Online Banking transactions, you will be receiving a One-Time Password (OTP) via your email.</p>
+		        <div class="input-group">
+					<span class="input-group-addon">OTP</span>
+					<input id="OTP" type="text" class="form-control" placeholder="Insert OTP"></input>
+				</div>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" onclick="login()">Proceed</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<!-- End of Modal -->
 		<!-- jQuery -->
-		<script src="jquery-1.11.1.min.js"></script>
+		<script src="jquery-2.1.1.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
 	</body>
