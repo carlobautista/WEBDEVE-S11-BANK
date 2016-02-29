@@ -75,8 +75,9 @@
 				<input type="text" class="form-control" placeholder="Insert account number"/>
 
 				<br>
-				<button class="btn btn-primary btn-lg">Pay bill</button>
-				<button class="btn btn-default btn-lg">Cancel</button>
+				
+				<button type="button" class="btn btn-default btn-lg">Cancel</button>
+				<button type="button" class="btn btn-primary btn-lg right">Pay bill</button>
 			</form>
 		</div>
 	</div>

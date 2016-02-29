@@ -66,8 +66,9 @@
 				<input type="text" class="form-control" placeholder="Insert account number">
 				
 				<br>
-				<button type="button" class="btn btn-primary btn-lg">Send Money</button>
+				
 				<button type="button" class="btn btn-default btn-lg">Cancel</button>
+				<button type="button" class="btn btn-primary btn-lg right">Send Money</button>
 			</form>
 		</div>
 	</div>

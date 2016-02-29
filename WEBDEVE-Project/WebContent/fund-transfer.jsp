@@ -62,9 +62,11 @@
 						<option value="2">Miguel Manalac</option>
 					</select>
 
+				<br>
 				<span>Amount:</span>
-					<input type="text" class="form-control" placeholder="Insert amount"></input>
+				<input type="text" class="form-control" placeholder="Insert amount"></input>
 					
+				<br>
 				<span>Destination Account:</span>
 				<select class="form-control">
 					<option value="Select">Select an Account</option>
@@ -73,8 +75,9 @@
 				</select>
 				
 				<br>
-				<button onClick="home()" class="btn btn-default" type="button">Send Money</button>
-				<button onClick="home()" class="btn btn-default" type="button">Cancel</button>
+				
+				<button onClick="home()" class="btn btn-default btn-lg" type="button">Cancel</button>
+				<button onClick="home()" class="btn btn-primary btn-lg right" type="button">Send Money</button>
 			</form>
 		</div>
 	</div>
