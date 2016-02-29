@@ -23,13 +23,12 @@
 				<form>
 	                <legend>Login to Peso Online Bank</legend>
 		                <div id="loginContainer">
+		                	<h4 class="margin">Login</h4>
 		                <div class="form-group">
-		                    <label for="">E-Mail Address</label>
 		                    <input type="text" name="username" class="form-control" pattern="[a-zA-Z0-9\s]+" placeholder="E-Mail Address" required>
 	                	</div>
 		
 		                <div class="form-group">
-		                    <label for="">Password</label>
 		                    	<input type="password" name="password" class="form-control" pattern="[a-zA-Z0-9\s]+" placeholder="Password" required>
 	                	</div>
 						<button onClick="login()" type="button" class="btn btn-primary rightBtn">Login</button>
@@ -127,7 +126,7 @@
 										<option value="30">30</option>
 										<option value="31">31</option>
 		                        	</select>
-		                        	<select id="year">
+		                        	<select>
 		                        		<option value="Year">Year</option>
 		                        		<option value="2016">2016</option>
 		                        		<option value="2015">2015</option>
@@ -201,6 +200,15 @@
 										<option value="1947">1947</option>
 		                        	</select>
 	                        	</div>
+	                        </div>
+	                        <div>
+	                        	<h4 class="margin">Gender</h4>
+	                        	<div class="radio margin">
+									<label><input type="radio" name="optradio">Male</label>
+								</div>
+								<div class="radio margin">
+									<label><input type="radio" name="optradio">Female</label>
+								</div>
 	                        </div>
 							<button type="submit" class="btn btn-primary rightBtn"> Sign Me Up!</button>
 						</div>
