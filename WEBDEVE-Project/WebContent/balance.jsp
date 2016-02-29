@@ -68,7 +68,10 @@
 		function Account(acctName, acctNum){
 			this.acctName = acctName;
 			this.acctNum = acctNum;
-			this.acctBal = 0;
+			if(acctNum == 9763249315)
+				this.acctBal = 2000;
+			else
+				this.acctBal = 0;
 		}
 		function initializeAccounts(){
 			acct1 = new Account("Carlo Bautista", 5484657920);
@@ -79,7 +82,11 @@
 		}
 		function displayBalance(){
 			for(i = 0; i < accounts.length; i++){
-				query = "<tr><td>"+accounts[i].acctName+"</td><td>P"+accounts[i].acctBal+"</td></tr>";
+				if (accounts[i].acctBal > 0)
+					query = "<tr><td>"+accounts[i].acctName+"</td><td>PHP "+accounts[i].acctBal+"</td></tr>";
+				else
+					query = "<tr class='danger'><td>"+accounts[i].acctName+"</td><td>PHP "+accounts[i].acctBal+"</td></tr>";
+					
 				$('#balTable tr:last').after(query);
 			}
 		}

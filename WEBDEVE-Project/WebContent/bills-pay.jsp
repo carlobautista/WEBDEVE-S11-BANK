@@ -64,7 +64,10 @@
 
 				<br>
 				<span>Amount:</span>
-				<input type="text" class="form-control" placeholder="Insert amount"/>
+				<div class="input-group">
+					<span class="input-group-addon">PHP</span>
+					<input type="text" class="form-control" placeholder="Insert amount"></input>
+				</div>	
 
 				<br>
 				<span>Account Name: </span>
