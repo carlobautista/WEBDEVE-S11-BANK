@@ -30,7 +30,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						<a href="#logout" class="textLeft">Logout</a>
+						<a href="login.jsp" class="textLeft">Logout</a>
 						</li>
 					</ul>
 				</div>
@@ -51,19 +51,22 @@
 			<h1>Send Money</h1>
 			<form>
 				<span>Source Account:</span>
-				<select></select>
+				<select class="form-control">
+					<option>Carlo Bautista</option>
+					<option>Miguel Manalac</option>
+				</select>
 
 				<br>
 				<span>Amount:</span>
-				<input type="text">
+				<input type="text" class="form-control" placeholder="Insert amount">
 
 				<br>
 				<span>Destination Account:</span>
-				<input type="text">
+				<input type="text" class="form-control" placeholder="Insert account number">
 				
 				<br>
-				<button>Send Money</button>
-				<button>Cancel</button>
+				<button type="button" class="btn btn-primary btn-lg">Send Money</button>
+				<button type="button" class="btn btn-default btn-lg">Cancel</button>
 			</form>
 		</div>
 	</div>

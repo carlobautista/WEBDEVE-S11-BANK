@@ -30,7 +30,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						<a href="#logout" class="textLeft">Logout</a>
+						<a href="login.jsp" class="textLeft">Logout</a>
 						</li>
 					</ul>
 				</div>
@@ -51,29 +51,31 @@
 			<h1>Bills Payment</h1>
 			<form>
 				<span>Pay From:</span>
-				<select>
-				</select>
+				<input type="text" class="form-control" placeholder="Insert payment info"/>
 
 				<br>
 				<span>Pay the Company/Biller:</span>
-				<select>
+				<select class="form-control">
+					<option>Skycable</option>
+					<option>PLDT</option>
+					<option>Maynilad</option>
 				</select>
 
 				<br>
 				<span>Amount:</span>
-				<input type="text">
+				<input type="text" class="form-control" placeholder="Insert amount"/>
 
 				<br>
 				<span>Account Name: </span>
-				<input type="text">
+				<input type="text" class="form-control" placeholder="Insert account name" />
 
 				<br>
 				<span>Account Number: </span>
-				<input type="text">
+				<input type="text" class="form-control" placeholder="Insert account number"/>
 
 				<br>
-				<button>Pay bill</button>
-				<button>Cancel</button>
+				<button class="btn btn-primary btn-lg">Pay bill</button>
+				<button class="btn btn-default btn-lg">Cancel</button>
 			</form>
 		</div>
 	</div>
