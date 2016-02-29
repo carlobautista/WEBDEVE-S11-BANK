@@ -56,6 +56,7 @@
 				<br>
 				<span>Pay the Company/Biller:</span>
 				<select class="form-control">
+					<option>Select a Company/Biller</option>
 					<option>Skycable</option>
 					<option>PLDT</option>
 					<option>Maynilad</option>
