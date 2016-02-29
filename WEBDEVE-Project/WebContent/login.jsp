@@ -13,7 +13,7 @@
 		<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
 		<script>
 			function login() {
-				location.href='dashboard.jsp';
+				location.href='HomePage.jsp';
 			}
 		</script>
 	</head>
@@ -210,7 +210,7 @@
 									<label><input type="radio" name="optradio">Female</label>
 								</div>
 	                        </div>
-							<button type="submit" class="btn btn-primary rightBtn"> Sign Me Up!</button>
+							<button type="submit" class="btn btn-primary right"> Sign Me Up!</button>
 						</div>
 				</form>
 			</div>

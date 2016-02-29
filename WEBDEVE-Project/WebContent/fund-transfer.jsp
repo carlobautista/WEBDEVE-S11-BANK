@@ -49,6 +49,34 @@
 		</div>
 		<div id="content">
 			<h1>Fund Transfer</h1>
+			<form>
+				<table>
+					<tr>
+						<td><span>Source Account:</span></td>
+						<td>
+							<select>
+								<option value="Select">Select an Account</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><span>Amount:</span></td>
+						<td><input type="text"></input></td>
+					</tr>
+					<tr>
+						<td><span>Destination Account:</span></td>
+						<td>
+							<select>
+								<option value="Select">Select an Account</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><button class="btn btn-default">Send Money</button></td>
+						<td><button class="btn btn-default right">Cancel</button></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 </body>

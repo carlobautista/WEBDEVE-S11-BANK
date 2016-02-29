@@ -48,8 +48,43 @@
 			</div>
 		</div>
 		<div id="content">
-			<h1>Saving Accounts</h1>
+			<h1>Savings Accounts</h1>
+			 <table id="balTable" class="table table-striped">
+				<tr>
+					<th>Account Name</th>
+					<th>Balance</th>
+				</tr>
+			 </table>
+			
 		</div>
 	</div>
+	<script>
+		var acctName;
+		var acctNum;
+		var acctBal;
+		var accounts = [];
+		var i;
+		
+		function Account(acctName, acctNum){
+			this.acctName = acctName;
+			this.acctNum = acctNum;
+			this.acctBal = 0;
+		}
+		function initializeAccounts(){
+			acct1 = new Account("Carlo Bautista", 5484657920);
+			acct2 = new Account("Miguel Manalac", 9763249315);
+			
+			accounts.push(acct1);
+			accounts.push(acct2);
+		}
+		function displayBalance(){
+			for(i = 0; i < accounts.length; i++){
+				query = "<tr><td>"+accounts[i].acctName+"</td><td>P"+accounts[i].acctBal+"</td></tr>";
+				$('#balTable tr:last').after(query);
+			}
+		}
+		initializeAccounts();
+		displayBalance();
+	</script>
 </body>
 </html>

@@ -70,7 +70,7 @@
 				}
 				function displayAccounts(){
 					for(i = 0; i < accounts.length; i++){
-						query = "<div id=account><center><table><tr><th>Account Name: </th><td>"+accounts[i].acctName+"</td></tr><tr><th>Account Number: </th><td>"+accounts[i].acctNum+"</td></tr></table></center><button id='delete' type='button'>Delete</button></div>";
+						query = "<div id=account><center><table><tr><th>Account Name: </th><td>"+accounts[i].acctName+"</td></tr><tr><th>Account Number: </th><td>"+accounts[i].acctNum+"</td></tr></table></center><button class='btn btn-primary delete' type='button'>Delete</button></div>";
 						$('#content').append(query);
 					}
 				}
