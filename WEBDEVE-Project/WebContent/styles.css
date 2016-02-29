@@ -1,0 +1,97 @@
+.textLeft{
+	float: left;
+	padding: 5px;
+}
+
+td th{
+	margin-left:40px;
+}
+
+#account{
+	border: 1px;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+	border-radius: 8px;
+	border-collapse: separate;
+	width: 60%;
+	height: 130px;
+	margin-top: 10px;
+	padding-top: 30px;
+}
+
+#delete{
+	height: 30px;
+	width: 60px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#header{
+	font-style: Arial, sans-serif;
+	font-size: 15px;
+	color: rgb(64,64,64);
+	float: right;
+	height: 100px;
+	padding: 5px;
+	margin-top: 0px;
+}
+
+#navBar{
+	float: left;
+	margin-left: 0px;
+	margin-top: 60px;
+	height: 320px;
+	width: 250px;
+	overflow: hidden;
+}
+
+#content{
+	margin-left: 270px;
+	margin-top: 60px;
+	overflow: hidden;
+}
+
+.textRight{
+	float: right;
+	padding: 5px;
+	padding-top: 10px;
+}
+
+.loginInput{
+	float:left;
+	padding: 5px;
+	position: relative;
+}
+
+.inputBox{
+	width: 200px;
+	height: 26px;
+	border: 1px ;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+}
+
+.btn{
+	position: absolute;
+	right: 20px;
+	float: right;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+#loginContainer{
+	position: relative;
+	clear: both;
+	border: 3px;
+	border-style: solid;
+	border-radius: 25px;
+	height: 230px;
+	width: 300px;
+	padding: 5px;
+	top: 150px;
+}
+
+.active{
+	background-color: green !important;
+}
