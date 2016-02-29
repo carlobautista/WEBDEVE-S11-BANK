@@ -49,6 +49,13 @@
 		</div>
 		<div id="content">
 			<h1>Manage Accounts</h1>
+			<table id="accts" class="table table-striped">
+				<tr>
+					<th>Account Name</th>
+					<th>Account Number</th>
+					<th></th>
+				</tr>
+			</table>
 			<script>
 				var acctName;
 				var acctNum;
@@ -66,16 +73,51 @@
 					acct2 = new Account("Miguel Manalac", 9763249315);
 					
 					accounts.push(acct1);
+					appendTr(acct1);
 					accounts.push(acct2);
+					appendTr(acct2);
 				}
+				function appendTr(account){
+					var tr = $("<tr />");
+					
+					var tdName = $("<td />");
+					tdName.html(account.acctName);
+					
+					var tdNum = $("<td />");
+					tdNum.html(account.acctNum);
+					
+					var buttonRemove = $("<button />");
+					buttonRemove.html("Delete");
+					buttonRemove.addClass("btn");
+					buttonRemove.addClass("btn-primary");
+					buttonRemove.addClass("delete");
+					buttonRemove.click("removeItem");
+					
+					tr.append(tdName);
+					tr.append(tdNum);
+					tr.append(buttonRemove);
+					tr.addClass("itemtr");
+					
+					$("#accts").append(tr);
+				}
+				function removeItem(){
+					var parent = $(this).parent();
+					var index = $(".itemtr").index(parent);
+					
+					accounts.splice(index, 1);
+					parent.remove();
+				}
+				/*
 				function displayAccounts(){
 					for(i = 0; i < accounts.length; i++){
-						query = "<div id=account><center><table><tr><th>Account Name: </th><td>"+accounts[i].acctName+"</td></tr><tr><th>Account Number: </th><td>"+accounts[i].acctNum+"</td></tr></table></center><button class='btn btn-primary delete' type='button'>Delete</button></div>";
-						$('#content').append(query);
+						var query = "<tr><td>"+accounts[i].acctName+"</td><td>"+accounts[i].acctNum+"</td><td><button onClick='deleteAcct(i)' class='btn btn-primary delete' type='button'>Delete</button></td></tr>";
+						$('#accts tr:last').after(query);
+						//query = "<div id=account><center><table><tr><th>Account Name: </th><td>"+accounts[i].acctName+"</td></tr><tr><th>Account Number: </th><td>"+accounts[i].acctNum+"</td></tr></table></center><button class='btn btn-primary delete' type='button'>Delete</button></div>";
+						//$('#content').append(query);
 					}
 				}
+				*/
 				initializeAccounts();
-				displayAccounts();
 			</script>
 		</div>
 	</div>

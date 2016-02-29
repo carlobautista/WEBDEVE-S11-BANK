@@ -18,25 +18,45 @@
 		</script>
 	</head>
 	<body>
-			<div>
-				<!-- <form action="login" method="POST" role="form"> -->
-				<form>
-	                <legend>Login to Peso Online Bank</legend>
-		                <div id="loginContainer">
-		                	<h4 class="margin">Login</h4>
-		                <div class="form-group">
-		                    <input type="text" name="username" class="form-control" pattern="[a-zA-Z0-9\s]+" placeholder="E-Mail Address" required>
-	                	</div>
-		
-		                <div class="form-group">
-		                    	<input type="password" name="password" class="form-control" pattern="[a-zA-Z0-9\s]+" placeholder="Password" required>
-	                	</div>
-						<button onClick="login()" type="button" class="btn btn-primary rightBtn">Login</button>
+			<div class="container-fluid">
+				<nav class="navbar navbar-inverse navbar-fixed-top">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">Peso</a>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li class="active">
+								<a href="#">Home</a>
+								</li>
+								<li>
+								<a href="#logout" class="textLeft">Edit Profile</a>
+								</li>
+							</ul>
+							
+							<!-- <form action="login" method="POST" role="form"> -->
+							<form class="form-inline">
+							<ul class="nav navbar-nav navbar-right">
+								<!-- <li>
+								<a href="#logout" class="textLeft">Logout</a>
+								</li>
+								 -->
+								 <li>
+									<input type="text" name="username" class="loginMargin form-control" pattern="[a-zA-Z0-9\s]+" placeholder="E-Mail Address" required>
+								</li>
+								<li>
+									<input type="password" name="password" class="loginMargin form-control" pattern="[a-zA-Z0-9\s]+" placeholder="Password" required>
+								</li>
+								<li>
+									<button onClick="login()" type="button" class="loginMargin btn btn-primary rightBtn">Login</button>
+								</li>
+							</ul>
+							</form>
+						</div>
 					</div>
-            	</form>
-            	
+				</nav>
             	<!-- <form action="register" method="POST" role="form"> -->
-            	<form>
+            	<form class="loginContainer">
                         <legend>Sign Up</legend>
                         <div id="regContainer" class="form-horizontal">
 	                        <p class="margin">*All fields are required.</p>
@@ -210,7 +230,7 @@
 									<label><input type="radio" name="optradio">Female</label>
 								</div>
 	                        </div>
-							<button type="submit" class="btn btn-primary right"> Sign Me Up!</button>
+							<button type="submit" class="btn btn-primary right"> Sign Up</button>
 						</div>
 				</form>
 			</div>

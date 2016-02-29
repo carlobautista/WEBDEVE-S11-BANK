@@ -87,6 +87,11 @@ table{
 	border-color: rgba(0,0,0,0.15);
 }
 
+.loginMargin{
+	margin-top: 7px;
+	margin-right: 5px;
+}
+
 .margin{
 	margin-left: 10px;
 }
@@ -99,10 +104,8 @@ table{
 	padding: 5px;
 }
 
-#loginContainer{
-	height: 230px;
-	width: 30%;
-	margin-left: 20px;
+.loginContainer{
+	margin-top: 60px;
 }
 
 #regContainer{

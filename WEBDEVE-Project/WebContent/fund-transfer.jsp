@@ -11,6 +11,11 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="jquery-2.1.1.js"></script>
+	<script>
+			function home() {
+				location.href='HomePage.jsp';
+			}
+	</script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -56,6 +61,8 @@
 						<td>
 							<select>
 								<option value="Select">Select an Account</option>
+								<option value="1">Miguel Inigo Manalac</option>
+								<option value="2">Miguel Manalac</option>
 							</select>
 						</td>
 					</tr>
@@ -68,12 +75,14 @@
 						<td>
 							<select>
 								<option value="Select">Select an Account</option>
+								<option value="1">Miguel Inigo Manalac</option>
+								<option value="2">Miguel Manalac</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td><button class="btn btn-default">Send Money</button></td>
-						<td><button class="btn btn-default right">Cancel</button></td>
+						<td><button onClick="home()" class="btn btn-default" type="button">Send Money</button></td>
+						<td><button onClick="home()" class="btn btn-default right" type="button">Cancel</button></td>
 					</tr>
 				</table>
 			</form>
