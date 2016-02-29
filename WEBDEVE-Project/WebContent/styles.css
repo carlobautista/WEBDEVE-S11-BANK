@@ -3,6 +3,14 @@
 	padding: 5px;
 }
 
+
+body {
+    background: #fbfbfb;
+}
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
 td th{
 	margin-left:40px;
 }
@@ -72,24 +80,29 @@ td th{
 	border-color: rgba(0,0,0,0.15);
 }
 
-.btn{
-	position: absolute;
-	right: 20px;
+.margin{
+	margin-left: 10px;
+}
+
+.rightBtn{
 	float: right;
+}
+
+.form-group{
 	padding: 5px;
-	margin-top: 5px;
 }
 
 #loginContainer{
-	position: relative;
-	clear: both;
-	border: 3px;
-	border-style: solid;
-	border-radius: 25px;
 	height: 230px;
-	width: 300px;
-	padding: 5px;
-	top: 150px;
+	width: 30%;
+	margin-left: 20px;
+}
+
+#regContainer{
+	width: 95%;
+	margin: auto;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .active{
