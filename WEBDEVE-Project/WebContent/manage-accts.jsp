@@ -89,7 +89,7 @@
 					var buttonRemove = $("<button />");
 					buttonRemove.html("Delete");
 					buttonRemove.addClass("btn");
-					buttonRemove.addClass("btn-primary");
+					buttonRemove.addClass("btn-danger");
 					buttonRemove.addClass("delete");
 					buttonRemove.click("removeItem");
 					
