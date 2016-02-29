@@ -55,36 +55,26 @@
 		<div id="content">
 			<h1>Fund Transfer</h1>
 			<form>
-				<table>
-					<tr>
-						<td><span>Source Account:</span></td>
-						<td>
-							<select>
-								<option value="Select">Select an Account</option>
-								<option value="1">Miguel Inigo Manalac</option>
-								<option value="2">Miguel Manalac</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><span>Amount:</span></td>
-						<td><input type="text"></input></td>
-					</tr>
-					<tr>
-						<td><span>Destination Account:</span></td>
-						<td>
-							<select>
-								<option value="Select">Select an Account</option>
-								<option value="1">Miguel Inigo Manalac</option>
-								<option value="2">Miguel Manalac</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><button onClick="home()" class="btn btn-default" type="button">Send Money</button></td>
-						<td><button onClick="home()" class="btn btn-default right" type="button">Cancel</button></td>
-					</tr>
-				</table>
+				<span>Source Account:</span>
+					<select class="form-control">
+						<option value="Select">Select an Account</option>
+						<option value="1">Miguel Inigo Manalac</option>
+						<option value="2">Miguel Manalac</option>
+					</select>
+
+				<span>Amount:</span>
+					<input type="text" class="form-control" placeholder="Insert amount"></input>
+					
+				<span>Destination Account:</span>
+				<select class="form-control">
+					<option value="Select">Select an Account</option>
+					<option value="1">Miguel Inigo Manalac</option>
+					<option value="2">Miguel Manalac</option>
+				</select>
+				
+				<br>
+				<button onClick="home()" class="btn btn-default" type="button">Send Money</button>
+				<button onClick="home()" class="btn btn-default" type="button">Cancel</button>
 			</form>
 		</div>
 	</div>
