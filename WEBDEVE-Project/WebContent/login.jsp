@@ -24,6 +24,11 @@
 		</script>
 	</head>
 	<body>
+		<c:if test="${message != null}">
+		<div class="alert alert-warning">
+			<c:out value="${message}" />
+		</div>
+		</c:if>
 			<div class="container-fluid">
 				<nav class="navbar navbar-inverse navbar-fixed-top">
 					<div class="container-fluid">
@@ -62,24 +67,29 @@
 					</div>
 				</nav>
             	<!-- <form action="register" method="POST" role="form"> -->
-            	<form class="loginContainer">
+            	<form action="Register" method="POST" role="form" class="loginContainer">
                         <legend>Sign Up</legend>
                         <div id="regContainer" class="form-horizontal">
 	                        <p class="margin">*All fields are required.</p>
 	                        <div class="col-xs-6 col-md-4">
 	                            <div class="form-group">
-	                                <input type="text" name="fname" class="form-control" id="" placeholder="First Name" title="Alphanumeric w/ or w/o spaces" required>
+	                                <input type="text" name="username" class="form-control" id="" placeholder="Username" title="Alphanumeric w/ or w/o spaces" required>
 	                            </div>
 	                        </div>
 	                        <div class="col-xs-6 col-md-4">
 	                            <div class="form-group">
-	                                <input type="text" name="lname" class="form-control" id="" placeholder="Last Name" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Alphanumeric w/ or w/o spaces" required>
+	                                <input type="text" name="fname" class="form-control" id="" placeholder="First Name" title="Alphabet" required>
+	                            </div>
+	                        </div>
+	                        <div class="col-xs-6 col-md-4">
+	                            <div class="form-group">
+	                                <input type="text" name="lname" class="form-control" id="" placeholder="Last Name" title="Alphabet" required>
 	                            </div>
 	                        </div>
 							
 							 <div class="col-xs-6 col-md-4">
 	                            <div class="form-group">
-	                                <input type="text" name="contactNum" class="form-control" id="" placeholder="Contact Number" pattern="[0-9\s]+" title="Numeric w/o spaces, 8 digits" required>
+	                                <input type="text" name="contactNum" class="form-control" id="" placeholder="Contact Number" pattern="[0-9\s]+" title="Numeric w/o spaces, 11 digits" required>
 	                            </div>
 	                        </div>
 	
@@ -100,6 +110,7 @@
 	                                <input type="password" name="vpassword" class="form-control" id="" placeholder="Verify Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Uppercase, Lowercase, Number/SpecialChar, min 8 chars" required>
 	                            </div>
 	                        </div>
+	                        <!--  
 	                        <div>
 	                        	<h4 class="margin">Birthday</h4>
 	                        	<div class="row margin">
@@ -227,13 +238,14 @@
 		                        	</select>
 	                        	</div>
 	                        </div>
-	                        <div>
+	                        -->
+	                        <div class="col-xs-6 col-md-4">
 	                        	<h4 class="margin">Gender</h4>
 	                        	<div class="radio margin">
-									<label><input type="radio" name="optradio">Male</label>
+									<label><input type="radio" name="optradio" value="male">Male</label>
 								</div>
 								<div class="radio margin">
-									<label><input type="radio" name="optradio">Female</label>
+									<label><input type="radio" name="optradio" value="female">Female</label>
 								</div>
 	                        </div>
 							<button type="submit" class="btn btn-primary right"> Sign Up</button>
