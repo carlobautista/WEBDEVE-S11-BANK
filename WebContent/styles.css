@@ -1,0 +1,120 @@
+.textLeft{
+	float: left;
+	padding: 5px;
+}
+
+.right{
+	float: right;
+}
+
+body {
+    background: #fbfbfb;
+}
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+td th{
+	margin-left:40px;
+	margin-top: 5px;
+}
+
+table{
+	border-collapse:separate;
+    border-spacing:0 5px;
+}
+
+#account{
+	border: 1px;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+	border-radius: 8px;
+	border-collapse: separate;
+	width: 60%;
+	height: 130px;
+	margin-top: 10px;
+	padding-top: 30px;
+}
+
+.delete{
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#header{
+	font-style: Arial, sans-serif;
+	font-size: 15px;
+	color: rgb(64,64,64);
+	float: right;
+	height: 100px;
+	padding: 5px;
+	margin-top: 0px;
+}
+
+#navBar{
+	float: left;
+	margin-left: 0px;
+	margin-top: 60px;
+	height: 320px;
+	width: 250px;
+	overflow: hidden;
+}
+
+#content{
+	margin-left: 270px;
+	margin-top: 60px;
+	overflow: hidden;
+}
+
+.textRight{
+	float: right;
+	padding: 5px;
+	padding-top: 10px;
+}
+
+.loginInput{
+	float:left;
+	padding: 5px;
+	position: relative;
+}
+
+.inputBox{
+	width: 200px;
+	height: 26px;
+	border: 1px ;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+}
+
+.loginMargin{
+	margin-top: 7px;
+	margin-right: 5px;
+}
+
+.margin{
+	margin-left: 10px;
+}
+
+.rightBtn{
+	float: right;
+}
+
+.form-group{
+	padding: 5px;
+}
+
+.loginContainer{
+	margin-top: 60px;
+}
+
+#regContainer{
+	width: 95%;
+	margin: auto;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.active{
+	
+}
