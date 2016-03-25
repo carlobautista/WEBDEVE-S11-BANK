@@ -16,7 +16,7 @@ public class Registrar {
 		PreparedStatement stmt;
 		
 		try{
-			stmt = (PreparedStatement) conn.prepareStatement("SELECT * FROM account WHERE username=?");
+			stmt = (PreparedStatement) conn.prepareStatement("SELECT * FROM user WHERE username=?");
 			stmt.setString(1, a.getUsername());
 			ResultSet rs = stmt.executeQuery();
 			
@@ -45,7 +45,7 @@ public class Registrar {
 		PreparedStatement stmt;
 		
 		try{
-			stmt = (PreparedStatement) conn.prepareStatement("SELECT * FROM account WHERE emailAddress=?");
+			stmt = (PreparedStatement) conn.prepareStatement("SELECT * FROM user WHERE emailAddress=?");
 			stmt.setString(1, a.getEmail());
 			ResultSet rs = stmt.executeQuery();
 			
@@ -75,7 +75,7 @@ public class Registrar {
 		boolean valid = false;
 		
 		try{
-			stmt = conn.prepareStatement("SELECT * FROM account WHERE username=? AND password=?");
+			stmt = conn.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();
@@ -101,7 +101,7 @@ public class Registrar {
 		try{
 			if(isUsernameValid(a) && isEmailValid(a)){
 				stmt=(PreparedStatement) conn.prepareStatement
-						("INSERT INTO account(username, password, firstName, lastName, contactNum)"
+						("INSERT INTO user(username, password, firstName, lastName, emailAddress, mobileNumber, gender)"
 						+ " VALUES (?,?,?,?,?,?,?)");
 
 				stmt.setString(1, a.getUsername());

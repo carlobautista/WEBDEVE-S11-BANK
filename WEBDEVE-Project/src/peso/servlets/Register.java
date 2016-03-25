@@ -16,11 +16,7 @@ import peso.services.Registrar;
 /**
  * Servlet implementation class Register
  */
-@WebServlet(
-		urlPatterns = { "/register" }, 
-		initParams = { 
-				@WebInitParam(name = "register", value = "")
-		})
+@WebServlet(name = "register", urlPatterns = { "/register" })
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

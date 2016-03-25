@@ -24,11 +24,6 @@
 		</script>
 	</head>
 	<body>
-		<c:if test="${message != null}">
-		<div class="alert alert-warning">
-			<c:out value="${message}" />
-		</div>
-		</c:if>
 			<div class="container-fluid">
 				<nav class="navbar navbar-inverse navbar-fixed-top">
 					<div class="container-fluid">
@@ -66,8 +61,10 @@
 						</div>
 					</div>
 				</nav>
+			</div>
+			<div class="container-fluid">
             	<!-- <form action="register" method="POST" role="form"> -->
-            	<form action="Register" method="POST" role="form" class="loginContainer">
+            	<form action="register" method="POST" role="form" class="loginContainer">
                         <legend>Sign Up</legend>
                         <div id="regContainer" class="form-horizontal">
 	                        <p class="margin">*All fields are required.</p>
