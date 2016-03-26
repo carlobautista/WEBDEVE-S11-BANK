@@ -56,7 +56,7 @@ public class Register extends HttpServlet {
 			
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-		if(!Registrar.isEmailValid(a)){
+		else if(!Registrar.isEmailValid(a)){
 			request.setAttribute("message", "Registration failed. E-mail already exists.");
 			
 			request.getRequestDispatcher("login.jsp").forward(request, response);

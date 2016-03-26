@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="">
 	<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +62,13 @@
 					</div>
 				</nav>
 			</div>
+			<c:if test="${message != null}">
+				<div class="alert alert-warning">
+					<c:out value="${message}" />
+				</div>
+			</c:if>
 			<div class="container-fluid">
+				
             	<!-- <form action="register" method="POST" role="form"> -->
             	<form action="register" method="POST" role="form" class="loginContainer">
                         <legend>Sign Up</legend>
