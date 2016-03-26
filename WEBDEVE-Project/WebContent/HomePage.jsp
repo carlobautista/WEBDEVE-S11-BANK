@@ -44,7 +44,7 @@
 				<a href="fund-transfer.jsp" class="list-group-item">Fund Transfer</a>
 				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
 				<a href="send-money.jsp" class="list-group-item">Send Money</a>
-				<a href="manage-accts.jsp" class="list-group-item">Manage Accounts</a>
+				<a href="${pageContext.request.contextPath}/manageaccounts" class="list-group-item">Manage Accounts</a>
 			</div>
 		</div>
 		<div id="content">

@@ -50,8 +50,7 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub\
 		final String username = request.getParameter("username").trim();
 		final String password = DigestUtils.sha256Hex(request.getParameter("password"));
-		System.out.println(username);
-		System.out.println(password);
+		
 		if(Registrar.isCredentialsValid(username, password)){
 			request.getSession().setAttribute("username", username);
 			

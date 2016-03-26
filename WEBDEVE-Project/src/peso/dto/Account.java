@@ -51,30 +51,4 @@ public class Account {
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
-	
-	public int getIdAccount(){
-		Connection conn = DBConnection.getConnection();
-		PreparedStatement ps;
-		int idAccount = 0;
-		
-		try{
-			ps = conn.prepareStatement("SELECT * FROM webdeve.account WHERE name = "+ getName());
-			
-			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()){
-				idUser = rs.getInt(1);
-			}
-			rs.close();
-			ps.close();
-			conn.close();
-			
-			return idAccount;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			return 0;
-		}
-	}
 }

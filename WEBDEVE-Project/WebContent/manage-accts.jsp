@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="peso.dto.Account, java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,81 +45,33 @@
 				<a href="fund-transfer.jsp" class="list-group-item">Fund Transfer</a>
 				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
 				<a href="send-money.jsp" class="list-group-item">Send Money</a>
-				<a href="manage-accts.jsp" class="list-group-item active">Manage Accounts</a>
+				<a href="${pageContext.request.contextPath}/manageaccounts" class="list-group-item active">Manage Accounts</a>
 			</div>
 		</div>
 		<div id="content">
 			<h1>Manage Accounts</h1>
-			<table id="accts" class="table table-striped">
-				<tr>
-					<th>Account Name</th>
-					<th>Account Number</th>
-					<th></th>
-				</tr>
-			</table>
-			<script>
-				var acctName;
-				var acctNum;
-				var acctBal;
-				var accounts = [];
-				var i;
-				
-				function Account(acctName, acctNum){
-					this.acctName = acctName;
-					this.acctNum = acctNum;
-					this.acctBal = 0;
-				}
-				function initializeAccounts(){
-					acct1 = new Account("Carlo Bautista", 5484657920);
-					acct2 = new Account("Miguel Manalac", 9763249315);
-					
-					accounts.push(acct1);
-					appendTr(acct1);
-					accounts.push(acct2);
-					appendTr(acct2);
-				}
-				function appendTr(account){
-					var tr = $("<tr />");
-					
-					var tdName = $("<td />");
-					tdName.html(account.acctName);
-					
-					var tdNum = $("<td />");
-					tdNum.html(account.acctNum);
-					
-					var buttonRemove = $("<button />");
-					buttonRemove.html("Delete");
-					buttonRemove.addClass("btn");
-					buttonRemove.addClass("btn-danger");
-					buttonRemove.addClass("delete");
-					buttonRemove.click("removeItem");
-					
-					tr.append(tdName);
-					tr.append(tdNum);
-					tr.append(buttonRemove);
-					tr.addClass("itemtr");
-					
-					$("#accts").append(tr);
-				}
-				function removeItem(){
-					var parent = $(this).parent();
-					var index = $(".itemtr").index(parent);
-					
-					accounts.splice(index, 1);
-					parent.remove();
-				}
-				/*
-				function displayAccounts(){
-					for(i = 0; i < accounts.length; i++){
-						var query = "<tr><td>"+accounts[i].acctName+"</td><td>"+accounts[i].acctNum+"</td><td><button onClick='deleteAcct(i)' class='btn btn-primary delete' type='button'>Delete</button></td></tr>";
-						$('#accts tr:last').after(query);
-						//query = "<div id=account><center><table><tr><th>Account Name: </th><td>"+accounts[i].acctName+"</td></tr><tr><th>Account Number: </th><td>"+accounts[i].acctNum+"</td></tr></table></center><button class='btn btn-primary delete' type='button'>Delete</button></div>";
-						//$('#content').append(query);
-					}
-				}
-				*/
-				initializeAccounts();
-			</script>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">Account Name</div>
+						<div class="col-md-4">Account Number</div>
+						<div class="col-md-4"></div>
+					</div>
+					<% 
+						ArrayList<Account> userAccts = (ArrayList<Account>)request.getAttribute("userAccts");
+					%>
+					<% for(int i =0; i < userAccts.size(); i ++) { %>
+					<form action="deleteaccount" method="POST" role="form">
+						<div class="row">
+							<div class="col-md-4">
+								<%=userAccts.get(i).getName()%>
+								<input type="hidden" name="acctName" id="" value="<%=userAccts.get(i).getName()%>">
+							</div>
+							<div class="col-md-4">PHP <%=userAccts.get(i).getBalance()%></div>
+							<div class="col-md-4"><button type="submit" name="action" class="btn btn-default">Delete</button></div>
+						</div>
+					</form>
+					<%} %>
+				</div>
 		</div>
 	</div>
 		

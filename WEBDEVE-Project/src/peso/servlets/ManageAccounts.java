@@ -14,23 +14,23 @@ import peso.dto.Account;
 import peso.services.UserDAO;
 
 /**
- * Servlet implementation class ViewBalance
+ * Servlet implementation class ManageAccounts
  */
 @WebServlet(
 		urlPatterns = { 
-				"/ViewBalance", 
-				"/viewbalance"
+				"/ManageAccounts", 
+				"/manageaccounts"
 		}, 
 		initParams = { 
-				@WebInitParam(name = "viewbalance", value = "")
+				@WebInitParam(name = "manageaccounts", value = "")
 		})
-public class ViewBalance extends HttpServlet {
+public class ManageAccounts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewBalance() {
+    public ManageAccounts() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +38,7 @@ public class ViewBalance extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
@@ -59,7 +59,7 @@ public class ViewBalance extends HttpServlet {
 		if(username != null){
 			ArrayList<Account> accountList = dao.getUserAccounts(username);
 			request.setAttribute("userAccts", accountList);
-			request.getRequestDispatcher("/balance.jsp").forward(request, response);
+			request.getRequestDispatcher("/manage-accts.jsp").forward(request, response);
 		}
 	}
 

@@ -48,7 +48,7 @@
           <a href="#content" class="navbaritem list-group-item" name="fund-transfer">Fund Transfer</a>
           <a href="#content" class="navbaritem list-group-item" name="bills-payment">Bills Payment</a>
           <a href="#content" class="navbaritem list-group-item" name="send-money">Send Money</a>
-          <a href="#content" class="navbaritem list-group-item" name="manage-accounts">Manage Accounts</a>
+          <a href="${pageContext.request.contextPath}/manageaccounts" class="navbaritem list-group-item" name="manage-accounts">Manage Accounts</a>
         </div>
       </div>
 
