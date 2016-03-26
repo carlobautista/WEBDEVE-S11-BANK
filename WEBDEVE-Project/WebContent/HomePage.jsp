@@ -40,7 +40,7 @@
 			<div class="list-group">
 				<a href="HomePage.jsp" class="list-group-item active">Home</a>
 				<a href="transaction-history.jsp" class="list-group-item">View Transaction History</a>
-				<a href="balance.jsp" class="list-group-item">View Balance</a>
+				<a href="${pageContext.request.contextPath}/viewbalance" class="list-group-item">View Balance</a>
 				<a href="fund-transfer.jsp" class="list-group-item">Fund Transfer</a>
 				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
 				<a href="send-money.jsp" class="list-group-item">Send Money</a>

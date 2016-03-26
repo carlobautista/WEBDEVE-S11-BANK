@@ -12,12 +12,15 @@ import peso.dto.Account;
 public class UserDAO {
 	public UserDAO(){}
 	
-	public ArrayList<Account> getUserAccounts(int idUser){
+	public ArrayList<Account> getUserAccounts(String username){
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement ps;
+		int idUser = getIdUser(username);
 		
 		try {
-			ps = conn.prepareStatement("SELECT * FROM webdeve.account WHERE idUser ="+idUser);
+			ps = conn.prepareStatement("SELECT * FROM webdeve.account WHERE idUser =?");
+			ps.setInt(1, idUser);
+			
 			ArrayList<Account> accountList = new ArrayList<>();
 			
 			ResultSet rs = ps.executeQuery();
@@ -34,6 +37,35 @@ public class UserDAO {
 			e.printStackTrace();
 			
 			return null;
+		}
+	}
+	
+
+	
+	public int getIdUser(String username){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		int idUser = 0;
+		
+		try{
+			ps = conn.prepareStatement("SELECT * FROM webdeve.user WHERE username =?");
+			ps.setString(1, username);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				idUser = rs.getInt(1);
+			}
+			rs.close();
+			ps.close();
+			conn.close();
+			
+			return idUser;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return 0;
 		}
 	}
 }

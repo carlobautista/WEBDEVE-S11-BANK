@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="peso.dto.Account, java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,7 +41,7 @@
 			<div class="list-group">
 				<a href="HomePage.jsp" class="list-group-item ">Home</a>
 				<a href="transaction-history.jsp" class="list-group-item">View Transaction History</a>
-				<a href="balance.jsp" class="list-group-item active">View Balance</a>
+				<a href="${pageContext.request.contextPath}/viewbalance" class="list-group-item active">View Balance</a>
 				<a href="fund-transfer.jsp" class="list-group-item">Fund Transfer</a>
 				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
 				<a href="send-money.jsp" class="list-group-item">Send Money</a>
@@ -54,10 +55,19 @@
 					<th>Account Name</th>
 					<th>Balance</th>
 				</tr>
+				<% 
+					ArrayList<Account> userAccts = (ArrayList<Account>)request.getAttribute("userAccts");
+				%>
+				<% for(int i =0; i < userAccts.size(); i ++) { %>
+				<tr>
+					<td><%=userAccts.get(i).getName()%></td>
+					<td>PHP <%=userAccts.get(i).getBalance()%></td>
+				</tr>
+				<%} %>
 			 </table>
 			
 		</div>
-	</div>
+	</div><!-- 
 	<script>
 		var acctName;
 		var acctNum;
@@ -92,6 +102,6 @@
 		}
 		initializeAccounts();
 		displayBalance();
-	</script>
+	</script> -->
 </body>
 </html>

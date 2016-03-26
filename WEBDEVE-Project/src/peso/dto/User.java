@@ -84,30 +84,4 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	public int getIdUser(){
-		Connection conn = DBConnection.getConnection();
-		PreparedStatement ps;
-		int idUser = 0;
-		
-		try{
-			ps = conn.prepareStatement("SELECT * FROM webdeve.user WHERE username = "+ getUsername());
-			
-			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()){
-				idUser = rs.getInt(1);
-			}
-			rs.close();
-			ps.close();
-			conn.close();
-			
-			return idUser;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			return 0;
-		}
-	}
 }

@@ -44,7 +44,7 @@
         <div class="list-group">
           <a href="#content" class="navbaritem list-group-item active" name="home">Home</a>
           <a href="#content" class="navbaritem list-group-item" name="view-transaction-history">View Transaction History</a>
-          <a href="#content" class="navbaritem list-group-item" name="view-balance">View Balance</a>
+          <a href="${pageContext.request.contextPath}/ViewBalance" class="navbaritem list-group-item" name="view-balance">View Balance</a>
           <a href="#content" class="navbaritem list-group-item" name="fund-transfer">Fund Transfer</a>
           <a href="#content" class="navbaritem list-group-item" name="bills-payment">Bills Payment</a>
           <a href="#content" class="navbaritem list-group-item" name="send-money">Send Money</a>

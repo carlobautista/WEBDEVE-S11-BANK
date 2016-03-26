@@ -15,7 +15,7 @@
 				var otp = $("#OTP").val();
 				if( otp == 12345678){
 					alert("Login Successful");
-					location.href='HomePage.jsp';
+					document.getElementById("loginform").submit();
 				}
 				else {
 					alert("Wrong OTP Please try again.")
@@ -40,23 +40,22 @@
 								</li>
 							</ul>
 							
-							<!-- <form action="login" method="POST" role="form"> -->
-							<form class="form-inline">
-							<ul class="nav navbar-nav navbar-right">
-								<!-- <li>
-								<a href="#logout" class="textLeft">Logout</a>
-								</li>
-								 -->
-								 <li>
-									<input type="text" name="username" class="loginMargin form-control" pattern="[a-zA-Z0-9\s]+" placeholder="E-Mail Address" required>
-								</li>
-								<li>
-									<input type="password" name="password" class="loginMargin form-control" pattern="[a-zA-Z0-9\s]+" placeholder="Password" required>
-								</li>
-								<li>
-									<button type="button" class="loginMargin btn btn-primary rightBtn" data-toggle="modal" data-target="#myModal">Login</button>
-								</li>
-							</ul>
+							<form id="loginform" action="login" method="POST" role="form" class="form-inline">
+								<ul class="nav navbar-nav navbar-right">
+									<!-- <li>
+									<a href="#logout" class="textLeft">Logout</a>
+									</li>
+									 -->
+									 <li>
+										<input type="text" id="username" name="username" class="loginMargin form-control" placeholder="E-Mail Address" required>
+									</li>
+									<li>
+										<input type="password" id="password" name="password" class="loginMargin form-control" placeholder="Password" required>
+									</li>
+									<li>
+										<button type="button" class="loginMargin btn btn-primary rightBtn" data-toggle="modal" data-target="#myModal">Login</button>
+									</li>
+								</ul>
 							</form>
 						</div>
 					</div>

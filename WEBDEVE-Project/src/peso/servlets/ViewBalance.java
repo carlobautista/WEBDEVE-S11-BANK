@@ -1,37 +1,36 @@
 package peso.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
-import peso.services.Registrar;
-
+import peso.dto.Account;
+import peso.services.UserDAO;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class ViewBalance
  */
 @WebServlet(
 		urlPatterns = { 
-				"/Login", 
-				"/login"
+				"/ViewBalance", 
+				"/viewbalance"
 		}, 
 		initParams = { 
-				@WebInitParam(name = "login", value = "")
+				@WebInitParam(name = "viewbalance", value = "")
 		})
-public class Login extends HttpServlet {
+public class ViewBalance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public ViewBalance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,31 +40,29 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		processRequest(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub\
-		final String username = request.getParameter("username").trim();
-		final String password = DigestUtils.sha256Hex(request.getParameter("password"));
+		// TODO Auto-generated method stub
+		processRequest(request, response);
+	}
+	
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		final String username = (String)request.getSession().getAttribute("username");
+		UserDAO dao = new UserDAO();
+		
+		System.out.println("ERROR SHOW YOURSELF");
 		System.out.println(username);
-		System.out.println(password);
-		if(Registrar.isCredentialsValid(username, password)){
-			request.getSession().setAttribute("username", username);
-			
-			request.setAttribute("message", "Login successful.");
-			
-			Cookie c = new Cookie("username", username);
-			c.setMaxAge(60 * 60 *24);
-			response.addCookie(c);
-			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-		}
-		else{
-			request.setAttribute("message", "Login unsuccessful. Please check your credentials.");
-			
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+		if(username != null){
+			ArrayList<Account> accountList = dao.getUserAccounts(username);
+			request.setAttribute("userAccts", accountList);
+			System.out.println("ERROR SHOW YOURSELF2");
+			request.getRequestDispatcher("/balance.jsp").forward(request, response);
 		}
 	}
 
