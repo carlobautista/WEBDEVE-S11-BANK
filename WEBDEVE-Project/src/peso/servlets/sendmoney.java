@@ -2,36 +2,24 @@ package peso.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
-import peso.services.Registrar;
-
+import peso.services.UserDAO;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class sendmoney
  */
-@WebServlet(
-		urlPatterns = { 
-				"/Login", 
-				"/login"
-		}, 
-		initParams = { 
-				@WebInitParam(name = "login", value = "")
-		})
-public class Login extends HttpServlet {
+@WebServlet("/sendmoney")
+public class sendmoney extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public sendmoney() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,22 +35,18 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub\
-		final String username = request.getParameter("username").trim();
-		final String password = DigestUtils.sha256Hex(request.getParameter("password"));
+		// TODO Auto-generated method stub
+		final int sendingAcct = Integer.parseInt(request.getParameter("sendingAcct"));
+		final int destAcct = Integer.parseInt(request.getParameter("destAcct"));
+		final int amt = Integer.parseInt(request.getParameter("amt"));
 		
-		if(Registrar.isCredentialsValid(username, password)){
-			request.getSession().setAttribute("username", username);
+		if(UserDAO.sendMoney(destAcct, sendingAcct, amt)){
+			request.setAttribute("message", "The money was successfuly sent to the destination account");
 			
-			request.setAttribute("message", "Login successful.");
-			
-			Cookie c = new Cookie("username", username);
-			c.setMaxAge(60 * 60 *24);
-			response.addCookie(c);
 			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 		}
 		else{
-			request.setAttribute("message", "Login unsuccessful. Please check your credentials.");
+			request.setAttribute("message", "Failed to send money to destination account");
 			
 			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 		}

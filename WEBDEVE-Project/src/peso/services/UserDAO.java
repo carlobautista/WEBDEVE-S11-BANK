@@ -26,7 +26,7 @@ public class UserDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()){
-				accountList.add(new Account(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5)));	
+				accountList.add(new Account(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5)));	
 			}
 			rs.close();
 			ps.close();
@@ -110,6 +110,93 @@ public class UserDAO {
 			conn.close();
 			
 			return true;
+		} catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static int getBalanceById(int idAccount){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		int balance = -1;
+		
+		try{
+			ps = conn.prepareStatement("SELECT balance "
+					+"FROM account "
+					+"WHERE idAccount = ?");
+			ps.setInt(1, idAccount);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				balance = rs.getInt(1);
+			}
+			rs.close();
+			ps.close();
+			conn.close();
+			
+			return balance;
+		} catch(SQLException e){
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public static String getNameById(int idAccount){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		String name="";
+		
+		try{
+			ps = conn.prepareStatement("SELECT name "
+					+"FROM account "
+					+"WHERE idAccount = ?");
+			ps.setInt(1, idAccount);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				name = rs.getString(1);
+			}
+			rs.close();
+			ps.close();
+			conn.close();
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return name;
+	}
+	
+	public static boolean sendMoney(int receivingAcct, int sendingAcct, int amt){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		
+		try{
+			if(getBalanceById(sendingAcct) >= amt && getBalanceById(sendingAcct) >= 0){
+				ps = conn.prepareStatement("UPDATE account "
+						+"SET balance=balance-? "
+						+"WHERE idAccount=? ");
+				ps.setInt(1, amt);
+				ps.setInt(2, sendingAcct);
+				ps.executeUpdate();
+				
+				ps = conn.prepareStatement("UPDATE account "
+						+"SET balance=balance+? " 
+						+"WHERE idAccount=? ");
+				ps.setInt(1, amt);
+				ps.setInt(2, receivingAcct);
+				ps.executeUpdate();
+				
+				ps.close();
+				conn.close();
+				
+				return true;
+			}
+			else{
+				return false;
+			}
 		} catch(SQLException e){
 			e.printStackTrace();
 			return false;

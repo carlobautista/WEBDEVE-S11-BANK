@@ -8,16 +8,26 @@ import java.sql.SQLException;
 import peso.db.DBConnection;
 
 public class Account {
+	private int idAccount;
 	private int idUser;
 	private String name;
 	private String type;
 	private int balance;
 	
-	public Account(int idUser, String name, String type, int balance){
+	public Account(int idAccount, int idUser, String name, String type, int balance){
+		this.idAccount = idAccount;
 		this.idUser = idUser;
 		this.name = name;
 		this.type = type;
 		this.balance = balance;
+	}
+
+	public int getIdAccount() {
+		return idAccount;
+	}
+
+	public void setIdAccount(int idAccount) {
+		this.idAccount = idAccount;
 	}
 
 	public int getIdUser() {

@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  response.setHeader("Cache-Control","no-cache");
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+
+  if(session.getAttribute("username")==null)
+      response.sendRedirect("login.jsp");
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,7 +57,7 @@
           <a href="${pageContext.request.contextPath}/ViewBalance" class="navbaritem list-group-item" name="view-balance">View Balance</a>
           <a href="#content" class="navbaritem list-group-item" name="fund-transfer">Fund Transfer</a>
           <a href="#content" class="navbaritem list-group-item" name="bills-payment">Bills Payment</a>
-          <a href="#content" class="navbaritem list-group-item" name="send-money">Send Money</a>
+          <a href="sendMoneyAccts" class="navbaritem list-group-item" name="send-money">Send Money</a>
           <a href="${pageContext.request.contextPath}/manageaccounts" class="navbaritem list-group-item" name="manage-accounts">Manage Accounts</a>
         </div>
       </div>

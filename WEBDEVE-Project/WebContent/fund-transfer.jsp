@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  response.setHeader("Cache-Control","no-cache");
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+
+  if(session.getAttribute("username")==null)
+      response.sendRedirect("login.jsp");
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,41 +56,42 @@
 				<a href="HomePage.jsp" class="list-group-item ">Home</a>
 				<a href="transaction-history.jsp" class="list-group-item">View Transaction History</a>
 				<a href="${pageContext.request.contextPath}/viewbalance" class="list-group-item">View Balance</a>
-				<a href="fund-transfer.jsp" class="list-group-item active">Fund Transfer</a>
+				<a href="fundTransferAccts" class="list-group-item active">Fund Transfer</a>
 				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
-				<a href="send-money.jsp" class="list-group-item">Send Money</a>
+				<a href="sendMoneyAccts" class="list-group-item">Send Money</a>
 				<a href="${pageContext.request.contextPath}/manageaccounts" class="list-group-item">Manage Accounts</a>
 			</div>
 		</div>
 		<div id="content">
 			<h1>Fund Transfer</h1>
-			<form>
+			<form action="fundtransfer" method="POST" role="form">
 				<span>Source Account:</span>
-					<select class="form-control">
-						<option value="Select">Select an Account</option>
-						<option value="1">Miguel Inigo Manalac</option>
-						<option value="2">Miguel Manalac</option>
-					</select>
+				<select name="sendingAcct" class="form-control">
+					<option>Select an account</option>
+					<c:forEach var="a" items="${userAccts }" varStatus="counter">
+						<option><c:out value="${a.idAccount}" /></option>
+					</c:forEach>
+				</select>
 
 				<br>
 				<span>Amount:</span>
 				<div class="input-group">
 					<span class="input-group-addon">PHP</span>
-					<input type="text" class="form-control" placeholder="Insert amount"></input>
+					<input name="amt" type="text" class="form-control" placeholder="Insert amount"></input>
 				</div>	
 				
 				<br>
 				<span>Destination Account:</span>
-				<select class="form-control">
-					<option value="Select">Select an Account</option>
-					<option value="1">Miguel Inigo Manalac</option>
-					<option value="2">Miguel Manalac</option>
+				<select name="destAcct" class="form-control">
+					<option>Select an account</option>
+					<c:forEach var="a" items="${userAccts }" varStatus="counter">
+						<option><c:out value="${a.idAccount}" /></option>
+					</c:forEach>
 				</select>
 				
 				<br>
 				
-				<button onClick="home()" class="btn btn-default btn-lg" type="button">Cancel</button>
-				<button onClick="home()" class="btn btn-primary btn-lg right" type="button">Send Money</button>
+				<button type="submit" class="btn btn-primary btn-lg right" type="button">Send Money</button>
 			</form>
 		</div>
 	</div>
