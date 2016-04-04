@@ -64,7 +64,7 @@
 				<select name="sendingAcct" class="form-control">
 					<option>Select an account</option>
 					<c:forEach var="a" items="${userAccts }" varStatus="counter">
-						<option><c:out value="${a.idAccount}" /></option>
+						<option><c:out value="${a.name}" /></option>
 					</c:forEach>
 				</select>
 

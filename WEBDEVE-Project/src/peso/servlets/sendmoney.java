@@ -36,7 +36,7 @@ public class sendmoney extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		final int sendingAcct = Integer.parseInt(request.getParameter("sendingAcct"));
+		final int sendingAcct = UserDAO.getIdAccount(request.getParameter("sendingAcct"));
 		final int destAcct = Integer.parseInt(request.getParameter("destAcct"));
 		final int amt = Integer.parseInt(request.getParameter("amt"));
 		
