@@ -21,6 +21,13 @@ public class Account {
 		this.type = type;
 		this.balance = balance;
 	}
+	
+	public Account(int idUser, String name, String type, int balance){
+		this.idUser = idUser;
+		this.name = name;
+		this.type = type;
+		this.balance = balance;
+	}
 
 	public int getIdAccount() {
 		return idAccount;

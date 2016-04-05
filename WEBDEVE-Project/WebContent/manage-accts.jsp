@@ -82,10 +82,48 @@
 					</form>
 					<%} %>
 				</div>
+				<div class="container">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">Add Savings Account</button>
+				</div>
 		</div>
 	</div>
 		
-	<script>
+	<div class="modal fade" tabindex="-1" role="dialog" id="addAccountModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Add Account</h4>
+	      </div>
+	      <form method="POST" action="AddAccount">
+		      <div class="modal-body">
+		        <div class="form-group">
+		        	<label for="accountName">Name</label>
+		        	<input name="accountName" id="accountName" type="text" class="form-control" placeholder="Input Account Name Here" required>
+		        </div>
+		        <div class="form-group">
+		        	<label for="accountBalance">Balance</label>
+		        	<div class="input-group">
+						<span class="input-group-addon">PHP</span>
+						<input name="accountBalance" id="accountBalance" type="text" class="form-control" placeholder="Insert Amount Here" required>
+					</div>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="submit" class="btn btn-primary">Confirm</button>
+		      </div>
+	      </form>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->	
+		
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    	
+	<script type="text/javascript">
 	</script>
 </body>
 </html>
