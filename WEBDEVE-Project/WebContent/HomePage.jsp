@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<div id="content">
-			<h1>Hello, Name!</h1>
+			<h1>Hello, <c:if test='${name != null}'><c:out value="${name}" /></c:if>!</h1>
 			<p>Welcome to Peso's Online Bank.</p>
 			
 			<c:if test="${message != null}">

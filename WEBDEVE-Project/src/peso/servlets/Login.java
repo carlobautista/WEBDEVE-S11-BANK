@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import peso.services.Registrar;
+import peso.services.UserDAO;
 
 
 /**
@@ -53,8 +54,11 @@ public class Login extends HttpServlet {
 		
 		if(Registrar.isCredentialsValid(username, password)){
 			request.getSession().setAttribute("username", username);
+			request.getSession().setAttribute("name", UserDAO.getUserName(username));
 			
 			request.setAttribute("message", "Login successful.");
+			
+			//System.out.println("OTP: "+UserDAO.generateOTP(username));
 			
 			Cookie c = new Cookie("username", username);
 			c.setMaxAge(60 * 60 *24);
