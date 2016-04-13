@@ -50,7 +50,7 @@
 			<div class="row">
 					<div class="btn-group" role="group">
 						    <a class="btn btn-primary active" href="HomePage.jsp" >Home</a>
-						    <a class="btn btn-default" href="transaction-history.jsp">View Transaction History</a>
+						    <a class="btn btn-default" href="ViewTransactionHistory">View Transaction History</a>
 							<a class="btn btn-default" href="viewbalance">View Balance</a>
 							<a class="btn btn-default" href="fundTransferAccts">Fund Transfer</a>
 							<a class="btn btn-default" href="BillsPayment">Bills Payment</a>

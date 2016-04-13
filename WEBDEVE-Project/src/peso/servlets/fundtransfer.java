@@ -59,7 +59,7 @@ public class fundtransfer extends HttpServlet {
 			
 			// After transaction put to table transaction in mysql
 			currentBalance = UserDAO.getBalanceById(sendingAcct);
-			description = "You have sent PHP" + amt + " from account : " + sendingName + " to account : " + destName;
+			description = "You have sent PHP" + amt + " from [" + sendingName + "] to [" + destName + "]";
 			type="Credit";
 			Transaction currentTransaction = new Transaction(userId, sendingAcct, sendingName, description, amt, type, currentBalance);
 			TransactionDAO.addTransaction(currentTransaction);

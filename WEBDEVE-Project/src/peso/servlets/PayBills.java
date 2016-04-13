@@ -60,7 +60,7 @@ public class PayBills extends HttpServlet {
 			
 			// After transaction put to table transaction in mysql
 			currentBalance = UserDAO.getBalanceById(payingAcct);
-			description = "You have payed your bills to "+ UserDAO.getNameById(destAcct) + " by PHP" + amount + " from account : " + payingName;
+			description = "You have payed your bills to "+ UserDAO.getNameById(destAcct) + " with a total amount of PHP" + amount + " from [" + payingName + "]";
 			type="Credit";
 			Transaction currentTransaction = new Transaction(userId, payingAcct, payingName, description, amount, type, currentBalance);
 			TransactionDAO.addTransaction(currentTransaction);

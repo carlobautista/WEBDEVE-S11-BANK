@@ -59,7 +59,7 @@ public class sendmoney extends HttpServlet {
 			
 			// After transaction put to table transaction in mysql
 			currentBalance = UserDAO.getBalanceById(sendingAcct);
-			description = "You have sent PHP" + amt + " from account : " + sendingName + " to account : " + UserDAO.getNameById(destAcct);
+			description = "You have sent PHP" + amt + " from [" + sendingName + "] to [" + UserDAO.getNameById(destAcct) + "]";
 			type="Credit";
 			Transaction currentTransaction = new Transaction(userId, sendingAcct, sendingName, description, amt, type, currentBalance);
 			TransactionDAO.addTransaction(currentTransaction);
