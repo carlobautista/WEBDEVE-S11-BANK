@@ -46,26 +46,35 @@
 				</div>
 			</div>
 		</nav>
-		<div id="navBar">
-			<div class="list-group">
-				<a href="HomePage.jsp" class="list-group-item active">Home</a>
-				<a href="transaction-history.jsp" class="list-group-item">View Transaction History</a>
-				<a href="viewbalance" class="list-group-item">View Balance</a>
-				<a href="fundTransferAccts" class="list-group-item">Fund Transfer</a>
-				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
-				<a href="sendMoneyAccts" class="list-group-item">Send Money</a>
-				<a href="manageaccounts" class="list-group-item">Manage Accounts</a>
+		<div class="container-fluid">
+			<div class="row">
+					<div class="btn-group" role="group">
+						    <a class="btn btn-primary active" href="HomePage.jsp" >Home</a>
+						    <a class="btn btn-default" href="transaction-history.jsp">View Transaction History</a>
+							<a class="btn btn-default" href="viewbalance">View Balance</a>
+							<a class="btn btn-default" href="fundTransferAccts">Fund Transfer</a>
+							<a class="btn btn-default" href="bills-pay.jsp">Bills Payment</a>
+							<a class="btn btn-default" href="sendMoneyAccts">Send Money</a>
+							<a class="btn btn-default" href="manageaccounts">Manage Accounts</a>
+					</div>
 			</div>
 		</div>
-		<div id="content">
-			<h1>Hello, <c:if test='${name != null}'><c:out value="${name}" /></c:if>!</h1>
-			<p>Welcome to Peso's Online Bank.</p>
-			
-			<c:if test="${message != null}">
-				<div class="alert alert-warning">
-					<c:out value="${message}" />
-				</div>
-			</c:if>
+		
+		<div class="container-fluid" style="padding-top: 10px;">
+		<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h1>Hello, <c:if test='${name != null}'><c:out value="${name}" /></c:if>!</h1>
+				<p>Welcome to Peso's Online Bank.</p>
+				
+				<c:if test="${message != null}">
+					<div class="alert alert-warning">
+						<c:out value="${message}" />
+					</div>
+				</c:if>
+			</div>
+		</div>
+		</div>
 		</div>
 	</div>
 </body>
