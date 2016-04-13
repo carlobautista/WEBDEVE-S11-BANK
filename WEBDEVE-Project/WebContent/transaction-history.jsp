@@ -59,20 +59,28 @@
 					</div>
 			</div>
 		</div>
-		<div id="content">
-			<h1>Transaction History</h1>
-			<table id="transTable" class="table table-striped">
-				<tr>
-					<th>Posting Date</th>
-					<th>Transaction ID</th>
-					<th>Account Name</th>
-					<th>Description</th>
-					<th>Debit/Credit</th>
-					<th>Amount</th>
-					<th>Running Balance</th>
-				</tr>
-			 </table>
+		
+		<div class="container-fluid" style="padding-top: 10px;">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Transaction History</h1>
+						<table id="transTable" class="table table-striped">
+							<tr>
+								<th>Posting Date</th>
+								<th>Transaction ID</th>
+								<th>Account Name</th>
+								<th>Description</th>
+								<th>Debit/Credit</th>
+								<th>Amount</th>
+								<th>Running Balance</th>
+							</tr>
+				 		</table>
+					</div>
+				</div>
+			</div>
 		</div>
+		
 	</div>
 	<script>
 		var acctName;

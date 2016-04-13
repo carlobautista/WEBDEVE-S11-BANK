@@ -62,34 +62,41 @@
 			</div>
 		</div>
 		
-		<div id="content">
-			<h1>Manage Accounts</h1>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4">Account Name</div>
-						<div class="col-md-4">Account Number</div>
-						<div class="col-md-4"></div>
-					</div>
-					<% 
-						ArrayList<Account> userAccts = (ArrayList<Account>)request.getAttribute("userAccts");
-					%>
-					<% for(int i =0; i < userAccts.size(); i ++) { %>
-					<form action="deleteaccount" method="POST" role="form">
-						<div class="row">
-							<div class="col-md-4">
-								<%=userAccts.get(i).getName()%>
-								<input type="hidden" name="acctName" id="" value="<%=userAccts.get(i).getName()%>">
+		<div class="container-fluid" style="padding-top: 10px;">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Manage Accounts</h1>
+						<div class="container">
+							<div class="row">
+								<div class="col-md-4">Account Name</div>
+								<div class="col-md-4">Account Number</div>
+								<div class="col-md-4"></div>
 							</div>
-							<div class="col-md-4">PHP <%=userAccts.get(i).getBalance()%></div>
-							<div class="col-md-4"><button type="submit" name="action" class="btn btn-default">Delete</button></div>
+							<% 
+								ArrayList<Account> userAccts = (ArrayList<Account>)request.getAttribute("userAccts");
+							%>
+							<% for(int i =0; i < userAccts.size(); i ++) { %>
+							<form action="deleteaccount" method="POST" role="form">
+								<div class="row">
+									<div class="col-md-4">
+										<%=userAccts.get(i).getName()%>
+										<input type="hidden" name="acctName" id="" value="<%=userAccts.get(i).getName()%>">
+									</div>
+									<div class="col-md-4">PHP <%=userAccts.get(i).getBalance()%></div>
+									<div class="col-md-4"><button type="submit" name="action" class="btn btn-default">Delete</button></div>
+								</div>
+							</form>
+							<%} %>
 						</div>
-					</form>
-					<%} %>
+						<div class="container">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">Add Savings Account</button>
+						</div>
+					</div>
 				</div>
-				<div class="container">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">Add Savings Account</button>
-				</div>
+			</div>
 		</div>
+		
 	</div>
 		
 	<div class="modal fade" tabindex="-1" role="dialog" id="addAccountModal">

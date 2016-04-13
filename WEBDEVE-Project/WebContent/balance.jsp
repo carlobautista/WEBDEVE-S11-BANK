@@ -60,60 +60,32 @@
 					</div>
 			</div>
 		</div>
-		<div id="content">
-			<h1>Savings Accounts</h1>
-			 <table id="balTable" class="table table-striped">
-				<tr>
-					<th>Account Name</th>
-					<th>Balance</th>
-				</tr>
-				<% 
-					ArrayList<Account> userAccts = (ArrayList<Account>)request.getAttribute("userAccts");
-				%>
-				<% for(int i =0; i < userAccts.size(); i ++) { %>
-				<tr>
-					<td><%=userAccts.get(i).getName()%></td>
-					<td>PHP <%=userAccts.get(i).getBalance()%></td>
-				</tr>
-				<%} %>
-			 </table>
-			
-		</div>
-	</div><!-- 
-	<script>
-		var acctName;
-		var acctNum;
-		var acctBal;
-		var accounts = [];
-		var i;
 		
-		function Account(acctName, acctNum){
-			this.acctName = acctName;
-			this.acctNum = acctNum;
-			if(acctNum == 9763249315)
-				this.acctBal = 2000;
-			else
-				this.acctBal = 0;
-		}
-		function initializeAccounts(){
-			acct1 = new Account("Carlo Bautista", 5484657920);
-			acct2 = new Account("Miguel Manalac", 9763249315);
-			
-			accounts.push(acct1);
-			accounts.push(acct2);
-		}
-		function displayBalance(){
-			for(i = 0; i < accounts.length; i++){
-				if (accounts[i].acctBal > 0)
-					query = "<tr><td>"+accounts[i].acctName+"</td><td>PHP "+accounts[i].acctBal+"</td></tr>";
-				else
-					query = "<tr class='danger'><td>"+accounts[i].acctName+"</td><td>PHP "+accounts[i].acctBal+"</td></tr>";
-					
-				$('#balTable tr:last').after(query);
-			}
-		}
-		initializeAccounts();
-		displayBalance();
-	</script> -->
+		<div class="container-fluid" style="padding-top: 10px;">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Savings Accounts</h1>
+						 <table id="balTable" class="table table-striped">
+							<tr>
+								<th>Account Name</th>
+								<th>Balance</th>
+							</tr>
+							<% 
+								ArrayList<Account> userAccts = (ArrayList<Account>)request.getAttribute("userAccts");
+							%>
+							<% for(int i =0; i < userAccts.size(); i ++) { %>
+							<tr>
+								<td><%=userAccts.get(i).getName()%></td>
+								<td>PHP <%=userAccts.get(i).getBalance()%></td>
+							</tr>
+							<%} %>
+						 </table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </body>
 </html>

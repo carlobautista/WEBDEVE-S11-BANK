@@ -61,34 +61,41 @@
 			</div>
 		</div>
 		
-		<div id="content">
-			<h1>Send Money</h1>
-			<form action="sendmoney" method="POST" role="form">
-				<span>Source Account:</span>
-				<select name="sendingAcct" class="form-control">
-					<option>Select an account</option>
-					<c:forEach var="a" items="${userAccts }" varStatus="counter">
-						<option><c:out value="${a.name}" /></option>
-					</c:forEach>
-				</select>
-
-				<br>
-				<span>Amount:</span>
-				<div class="input-group">
-					<span class="input-group-addon">PHP</span>
-					<input name="amt" type="text" class="form-control" placeholder="Insert amount"></input>
-				</div>	
-
-				<br>
-				<span>Destination Account:</span>
-				<input name="destAcct" type="text" class="form-control" placeholder="Insert account number">
-				
-				<br>
-				
-				<button type="button" class="btn btn-default btn-lg">Cancel</button>
-				<button type="submit" class="btn btn-primary btn-lg right">Send Money</button>
-			</form>
+		<div class="container-fluid" style="padding-top: 10px;">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Send Money</h1>
+						<form action="sendmoney" method="POST" role="form">
+							<span>Source Account:</span>
+							<select name="sendingAcct" class="form-control">
+								<option>Select an account</option>
+								<c:forEach var="a" items="${userAccts }" varStatus="counter">
+									<option><c:out value="${a.name}" /></option>
+								</c:forEach>
+							</select>
+			
+							<br>
+							<span>Amount:</span>
+							<div class="input-group">
+								<span class="input-group-addon">PHP</span>
+								<input name="amt" type="text" class="form-control" placeholder="Insert amount"></input>
+							</div>	
+			
+							<br>
+							<span>Destination Account:</span>
+							<input name="destAcct" type="text" class="form-control" placeholder="Insert account number">
+							
+							<br>
+							
+							<button type="button" class="btn btn-default btn-lg">Cancel</button>
+							<button type="submit" class="btn btn-primary btn-lg right">Send Money</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
+		
 	</div>
 </body>
 </html>

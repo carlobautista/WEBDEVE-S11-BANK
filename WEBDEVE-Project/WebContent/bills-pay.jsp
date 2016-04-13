@@ -61,42 +61,50 @@
 			</div>
 		</div>
 		
-		<div id="content">
-			<h1>Bills Payment</h1>
-			<form>
-				<span>Pay From:</span>
-				<input type="text" class="form-control" placeholder="Insert payment info"/>
-
-				<br>
-				<span>Pay the Company/Biller:</span>
-				<select class="form-control">
-					<option>Select a Company/Biller</option>
-					<option>Skycable</option>
-					<option>PLDT</option>
-					<option>Maynilad</option>
-				</select>
-
-				<br>
-				<span>Amount:</span>
-				<div class="input-group">
-					<span class="input-group-addon">PHP</span>
-					<input type="text" class="form-control" placeholder="Insert amount"></input>
-				</div>	
-
-				<br>
-				<span>Account Name: </span>
-				<input type="text" class="form-control" placeholder="Insert account name" />
-
-				<br>
-				<span>Account Number: </span>
-				<input type="text" class="form-control" placeholder="Insert account number"/>
-
-				<br>
-				
-				<button type="button" class="btn btn-default btn-lg">Cancel</button>
-				<button type="button" class="btn btn-primary btn-lg right">Pay bill</button>
-			</form>
+		<div class="container-fluid" style="padding-top: 10px;">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Bills Payment</h1>
+						<form>
+							<span>Pay From:</span>
+							<input type="text" class="form-control" placeholder="Insert payment info"/>
+			
+							<br>
+							<span>Pay the Company/Biller:</span>
+							<select class="form-control">
+								<option>Select a Company/Biller</option>
+								<option>Skycable</option>
+								<option>PLDT</option>
+								<option>Maynilad</option>
+							</select>
+			
+							<br>
+							<span>Amount:</span>
+							<div class="input-group">
+								<span class="input-group-addon">PHP</span>
+								<input type="text" class="form-control" placeholder="Insert amount"></input>
+							</div>	
+			
+							<br>
+							<span>Account Name: </span>
+							<input type="text" class="form-control" placeholder="Insert account name" />
+			
+							<br>
+							<span>Account Number: </span>
+							<input type="text" class="form-control" placeholder="Insert account number"/>
+			
+							<br>
+							
+							<button type="button" class="btn btn-default btn-lg">Cancel</button>
+							<button type="button" class="btn btn-primary btn-lg right">Pay bill</button>
+						</form>
+						
+					</div>
+				</div>
+			</div>
 		</div>
+		
 	</div>
 </body>
 </html>

@@ -61,20 +61,20 @@
 		</div>
 		
 		<div class="container-fluid" style="padding-top: 10px;">
-		<div class="row">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<h1>Hello, <c:if test='${name != null}'><c:out value="${name}" /></c:if>!</h1>
-				<p>Welcome to Peso's Online Bank.</p>
-				
-				<c:if test="${message != null}">
-					<div class="alert alert-warning">
-						<c:out value="${message}" />
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Hello, <c:if test='${name != null}'><c:out value="${name}" /></c:if>!</h1>
+						<p>Welcome to Peso's Online Bank.</p>
+						
+						<c:if test="${message != null}">
+							<div class="alert alert-warning">
+								<c:out value="${message}" />
+							</div>
+						</c:if>
 					</div>
-				</c:if>
+				</div>
 			</div>
-		</div>
-		</div>
 		</div>
 	</div>
 </body>
