@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import peso.dto.Transaction;
+import peso.services.TransactionDAO;
 import peso.services.UserDAO;
 
 /**
@@ -38,13 +40,30 @@ public class PayBills extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		final int payingAcct = UserDAO.getIdAccount(request.getParameter("payingAcct"));
-		final int destAcct = UserDAO.getIdAccount(request.getParameter("billerAcct"));
+		final String payingName = request.getParameter("payingAcct");
+		final int payingAcct = UserDAO.getIdAccount(payingName);
+		final String billerName = request.getParameter("billerAcct");
+		final int destAcct = UserDAO.getIdAccount(billerName);
 		final int amount = Integer.parseInt(request.getParameter("amount"));
+		
+		String description = "";
+		String type = "";
+		
+		int currentBalance = 0;
+		
+		UserDAO userDAO = new UserDAO();
+		
+		int userId = userDAO.getIdUser(request.getSession().getAttribute("username").toString());
 
 		if(UserDAO.sendMoney(destAcct, payingAcct, amount)){
 			request.setAttribute("message", "The money was successfuly paid to the biller.");
+			
+			// After transaction put to table transaction in mysql
+			currentBalance = UserDAO.getBalanceById(payingAcct);
+			description = "You have payed your bills to "+ UserDAO.getNameById(destAcct) + " by PHP" + amount + " from account : " + payingName;
+			type="Credit";
+			Transaction currentTransaction = new Transaction(userId, payingAcct, payingName, description, amount, type, currentBalance);
+			TransactionDAO.addTransaction(currentTransaction);
 			
 			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 		} else {

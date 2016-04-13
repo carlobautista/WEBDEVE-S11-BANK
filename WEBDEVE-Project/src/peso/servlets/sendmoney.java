@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import peso.dto.Transaction;
+import peso.services.TransactionDAO;
 import peso.services.UserDAO;
 
 /**
@@ -36,12 +38,31 @@ public class sendmoney extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		final int sendingAcct = UserDAO.getIdAccount(request.getParameter("sendingAcct"));
-		final int destAcct = Integer.parseInt(request.getParameter("destAcct"));
+		
+		final String sendingName = request.getParameter("sendingAcct");
+		final int sendingAcct = UserDAO.getIdAccount(sendingName);
+		final String destName = request.getParameter("destAcct");
+		final int destAcct = Integer.parseInt(destName);
 		final int amt = Integer.parseInt(request.getParameter("amt"));
+		
+		String description = "";
+		String type = "";
+		
+		int currentBalance = 0;
+		
+		UserDAO userDAO = new UserDAO();
+		
+		int userId = userDAO.getIdUser(request.getSession().getAttribute("username").toString());
 		
 		if(UserDAO.sendMoney(destAcct, sendingAcct, amt)){
 			request.setAttribute("message", "The money was successfuly sent to the destination account");
+			
+			// After transaction put to table transaction in mysql
+			currentBalance = UserDAO.getBalanceById(sendingAcct);
+			description = "You have sent PHP" + amt + " from account : " + sendingName + " to account : " + UserDAO.getNameById(destAcct);
+			type="Credit";
+			Transaction currentTransaction = new Transaction(userId, sendingAcct, sendingName, description, amt, type, currentBalance);
+			TransactionDAO.addTransaction(currentTransaction);
 			
 			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 		}
