@@ -67,17 +67,22 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<h1>Bills Payment</h1>
-						<form>
+						<form action="PayBills" method="POST">
 							<span>Pay From:</span>
-							<input type="text" class="form-control" placeholder="Insert payment info"/>
+							<select name="payingAcct" class="form-control" required>
+								<option>Select an account</option>
+								<c:forEach var="a" items="${userAccts }" varStatus="counter">
+									<option><c:out value="${a.name}" /></option>
+								</c:forEach>
+							</select>
 			
 							<br>
 							<span>Pay the Company/Biller:</span>
-							<select class="form-control">
+							<select name="billerAcct" class="form-control" required>
 								<option value="">Select a Company/Biller</option>
 								<% ArrayList<Account> billersList = (ArrayList<Account>)request.getAttribute("billersList"); %>
 								<% for(int i = 0; i < billersList.size(); i++) { %>
-									<option value='<%=billersList.get(i).getIdAccount() %>'><%=billersList.get(i).getName() %></option>
+									<option><%=billersList.get(i).getName()%></option>
 								<% } %>
 							</select>
 			
@@ -85,21 +90,14 @@
 							<span>Amount:</span>
 							<div class="input-group">
 								<span class="input-group-addon">PHP</span>
-								<input type="text" class="form-control" placeholder="Insert amount"></input>
+								<input name="amount" type="text" class="form-control" placeholder="Insert amount" required>
 							</div>	
 			
-							<br>
-							<span>Account Name: </span>
-							<input type="text" class="form-control" placeholder="Insert account name" />
-			
-							<br>
-							<span>Account Number: </span>
-							<input type="text" class="form-control" placeholder="Insert account number"/>
 			
 							<br>
 							
 							<button type="button" class="btn btn-default btn-lg">Cancel</button>
-							<button type="button" class="btn btn-primary btn-lg right">Pay bill</button>
+							<button type="submit" class="btn btn-primary btn-lg right">Pay bill</button>
 						</form>
 						
 					</div>

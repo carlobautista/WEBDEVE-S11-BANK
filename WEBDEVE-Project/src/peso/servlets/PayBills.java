@@ -1,29 +1,25 @@
 package peso.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import peso.dto.Account;
-import peso.services.AccountDAO;
 import peso.services.UserDAO;
 
 /**
- * Servlet implementation class BillsPayment
+ * Servlet implementation class PayBills
  */
-@WebServlet("/BillsPayment")
-public class BillsPayment extends HttpServlet {
+@WebServlet("/PayBills")
+public class PayBills extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BillsPayment() {
+    public PayBills() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +30,6 @@ public class BillsPayment extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		processRequest(request, response);
 	}
 
 	/**
@@ -42,20 +37,21 @@ public class BillsPayment extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request, response);
+		doGet(request, response);
 		
-	}
-	
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final String username = (String)request.getSession().getAttribute("username");
-		
-		ArrayList<Account> billersList = AccountDAO.getBillers();
-		UserDAO dao = new UserDAO();
-		ArrayList<Account> accountList = dao.getUserAccounts(username);
-		
-		request.setAttribute("userAccts", accountList);
-		request.setAttribute("billersList", billersList);
-		request.getRequestDispatcher("/bills-pay.jsp").forward(request, response);
+		final int payingAcct = UserDAO.getIdAccount(request.getParameter("payingAcct"));
+		final int destAcct = UserDAO.getIdAccount(request.getParameter("billerAcct"));
+		final int amount = Integer.parseInt(request.getParameter("amount"));
+
+		if(UserDAO.sendMoney(destAcct, payingAcct, amount)){
+			request.setAttribute("message", "The money was successfuly paid to the biller.");
+			
+			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+		} else {
+			request.setAttribute("message", "Failed to pay biller.");
+			
+			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+		}
 	}
 
 }
