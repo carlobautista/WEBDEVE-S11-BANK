@@ -329,8 +329,8 @@ public class UserDAO {
 		
 		try{
 				stmt=(PreparedStatement) conn.prepareStatement
-						("INSERT INTO otp(otp, username, date_created, expiry_date)"
-						+ " VALUES (?,?,?,?)");
+						("INSERT INTO otp(otp, username, date_created, expiry_date, status)"
+						+ " VALUES (?,?,?,?,0)");
 
 				stmt.setString(1, otp);
 				stmt.setString(2, username);
@@ -377,7 +377,7 @@ public class UserDAO {
 		try{
 			ps = conn.prepareStatement("SELECT * "
 					+"FROM otp "
-					+"WHERE username = ? AND expiry_date > NOW()");
+					+"WHERE username = ? AND expiry_date > NOW() AND status=0");
 			ps.setString(1, username);
 			
 			ResultSet rs = ps.executeQuery();
@@ -405,7 +405,7 @@ public class UserDAO {
 		try{
 			ps = conn.prepareStatement("SELECT * "
 					+"FROM otp "
-					+"WHERE username = ? AND otp = ? AND expiry_date > NOW()");
+					+"WHERE username = ? AND otp = ? AND expiry_date > NOW() AND status=0");
 			ps.setString(1, username);
 			ps.setString(2, OTP);
 			
@@ -413,6 +413,12 @@ public class UserDAO {
 			
 			if(rs.next()){
 				otpValidated = true;
+				
+				ps = conn.prepareStatement("UPDATE otp SET status=1 WHERE username = ? AND otp = ? AND expiry_date > NOW() AND status=0");
+				ps.setString(1, username);
+				ps.setString(2, OTP);
+				
+				ps.executeUpdate();
 			}
 			rs.close();
 			ps.close();

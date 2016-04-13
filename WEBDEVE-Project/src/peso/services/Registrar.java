@@ -40,6 +40,36 @@ public class Registrar {
 		}
 	}
 	
+	public static boolean isUsernameValid(String username){ //false=username exists, true=doesnt exist{
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement stmt;
+		
+		try{
+			stmt = (PreparedStatement) conn.prepareStatement("SELECT * FROM user WHERE username=?");
+			stmt.setString(1, username);
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()){
+				rs.close();
+				stmt.close();
+				conn.close();
+				
+				return true;
+			}
+			else{
+				rs.close();
+				stmt.close();
+				conn.close();
+				
+				return false;
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
 	public static boolean isEmailValid(User a){ //false=email exists, true=doesnt exist{
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement stmt;

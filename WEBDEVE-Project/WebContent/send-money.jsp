@@ -66,9 +66,10 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<h1>Send Money</h1>
-						<form action="sendmoney" method="POST" role="form">
+						<!--  <form action="sendmoney" method="POST" role="form"> -->
+						<form>
 							<span>Source Account:</span>
-							<select name="sendingAcct" class="form-control">
+							<select id="sendingAcct" name="sendingAcct" class="form-control">
 								<option>Select an account</option>
 								<c:forEach var="a" items="${userAccts }" varStatus="counter">
 									<option><c:out value="${a.name}" /></option>
@@ -79,17 +80,16 @@
 							<span>Amount:</span>
 							<div class="input-group">
 								<span class="input-group-addon">PHP</span>
-								<input name="amt" type="text" class="form-control" placeholder="Insert amount"></input>
+								<input id="amt" name="amt" type="text" class="form-control" placeholder="Insert amount"></input>
 							</div>	
 			
 							<br>
 							<span>Destination Account:</span>
-							<input name="destAcct" type="text" class="form-control" placeholder="Insert account number">
+							<input id="destAcct" name="destAcct" type="text" class="form-control" placeholder="Insert account number">
 							
 							<br>
 							
-							<button type="button" class="btn btn-default btn-lg">Cancel</button>
-							<button type="submit" class="btn btn-primary btn-lg right">Send Money</button>
+							<button id="prepareOTP" type="button" class="btn btn-primary btn-lg right">Send Money</button>
 						</form>
 					</div>
 				</div>
@@ -97,5 +97,60 @@
 		</div>
 		
 	</div>
+	
+	<!-- Modal for code confirmation -->
+		
+		<div id="otpModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">One-Time Password(OTP)</h4>
+		      </div>
+		      
+		      <div class="modal-body">
+		      	<div class="alert alert-success" role="alert">
+		        	Your OTP has been sent to your email.
+		        </div>
+		        <div class="input-group">
+					<span class="input-group-addon">OTP</span>
+					<input id="OTP" type="text" class="form-control" placeholder="Insert OTP here"></input>
+				</div>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Close</button>
+		        <button id="validateOTP" type="button" class="btn btn-primary">Proceed</button>
+		      </div>
+		      
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<div id="otpWaitModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Generating One Time Password Please Wait.</h4>
+		      </div>
+		      
+		      <div class="modal-body">
+		        <div>
+		        <p>To further ensure the security of your Online Banking transactions, you will be receiving a One-Time Password (OTP) via your email.</p>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		      
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<!-- End of Modal -->
+		<!-- jQuery -->
+		<script src="jquery-2.1.1.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/send-money.js"></script>
 </body>
 </html>

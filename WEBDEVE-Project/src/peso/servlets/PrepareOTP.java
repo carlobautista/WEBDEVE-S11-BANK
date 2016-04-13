@@ -16,7 +16,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import net.sf.json.JSONObject;
 import peso.services.Registrar;
 import peso.services.UserDAO;
 
@@ -40,7 +39,6 @@ public class PrepareOTP extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -48,14 +46,12 @@ public class PrepareOTP extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 		
 		response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        
-		Map<String, String[]> userInfo = request.getParameterMap();
 		
-		final String username = Arrays.asList(userInfo.get("username")).get(0);
-		final String password = DigestUtils.sha256Hex(Arrays.asList(userInfo.get("password")).get(0));
+		final String username = request.getSession().getAttribute("username").toString();
 		
 		Gson gson = new GsonBuilder().create();
 		
@@ -63,7 +59,7 @@ public class PrepareOTP extends HttpServlet {
 		
 		boolean otpGenerated = false;
 		
-		if(Registrar.isCredentialsValid(username, password)){
+		if(Registrar.isUsernameValid(username)){
 			// Generate the One-Time Password
 			UserDAO.generateOTP(username);
 			otpGenerated = true;

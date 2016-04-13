@@ -1,11 +1,18 @@
 package peso.servlets;
 
 import java.io.IOException;
+import java.io.Writer;
+import java.util.Arrays;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import peso.dto.Transaction;
 import peso.services.TransactionDAO;
@@ -39,11 +46,16 @@ public class sendmoney extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		final String sendingName = request.getParameter("sendingAcct");
+		response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        Map<String, String[]> sendMoneyInfo = request.getParameterMap();
+        
+        final String sendingName = Arrays.asList(sendMoneyInfo.get("sendingAcct")).get(0);
 		final int sendingAcct = UserDAO.getIdAccount(sendingName);
-		final String destName = request.getParameter("destAcct");
+		final String destName = Arrays.asList(sendMoneyInfo.get("destAcct")).get(0);
 		final int destAcct = Integer.parseInt(destName);
-		final int amt = Integer.parseInt(request.getParameter("amt"));
+		final int amt = Integer.parseInt(Arrays.asList(sendMoneyInfo.get("amt")).get(0));
 		
 		String description = "";
 		String type = "";
@@ -53,6 +65,12 @@ public class sendmoney extends HttpServlet {
 		UserDAO userDAO = new UserDAO();
 		
 		int userId = userDAO.getIdUser(request.getSession().getAttribute("username").toString());
+		
+		boolean moneySent = false;
+		
+		Gson gson = new GsonBuilder().create();
+		
+		Writer responseWriter = response.getWriter();
 		
 		if(UserDAO.sendMoney(destAcct, sendingAcct, amt)){
 			request.setAttribute("message", "The money was successfuly sent to the destination account");
@@ -64,13 +82,17 @@ public class sendmoney extends HttpServlet {
 			Transaction currentTransaction = new Transaction(userId, sendingAcct, sendingName, description, amt, type, currentBalance);
 			TransactionDAO.addTransaction(currentTransaction);
 			
-			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+			moneySent = true;
+			//request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 		}
 		else{
 			request.setAttribute("message", "Failed to send money to destination account");
 			
-			request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+			
+			//request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 		}
+		
+		gson.toJson(moneySent, responseWriter);
 	}
 
 }
