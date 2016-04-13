@@ -51,11 +51,11 @@
 			<div class="list-group">
 				<a href="HomePage.jsp" class="list-group-item ">Home</a>
 				<a href="transaction-history.jsp" class="list-group-item">View Transaction History</a>
-				<a href="${pageContext.request.contextPath}/viewbalance" class="list-group-item active">View Balance</a>
+				<a href="viewbalance" class="list-group-item active">View Balance</a>
 				<a href="fundTransferAccts" class="list-group-item">Fund Transfer</a>
 				<a href="bills-pay.jsp" class="list-group-item">Bills Payment</a>
 				<a href="sendMoneyAccts" class="list-group-item">Send Money</a>
-				<a href="${pageContext.request.contextPath}/manageaccounts" class="list-group-item">Manage Accounts</a>
+				<a href="manageaccounts" class="list-group-item">Manage Accounts</a>
 			</div>
 		</div>
 		<div id="content">
