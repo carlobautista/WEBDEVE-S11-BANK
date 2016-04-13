@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="peso.dto.Account, java.util.*" %>
 <%
   response.setHeader("Cache-Control","no-cache");
   response.setHeader("Cache-Control","no-store");
@@ -54,7 +55,7 @@
 						    <a class="btn btn-default" href="transaction-history.jsp">View Transaction History</a>
 							<a class="btn btn-default" href="viewbalance">View Balance</a>
 							<a class="btn btn-default" href="fundTransferAccts">Fund Transfer</a>
-							<a class="btn btn-primary active" href="bills-pay.jsp">Bills Payment</a>
+							<a class="btn btn-primary active" href="BillsPayment">Bills Payment</a>
 							<a class="btn btn-default" href="sendMoneyAccts">Send Money</a>
 							<a class="btn btn-default" href="manageaccounts">Manage Accounts</a>
 					</div>
@@ -73,10 +74,11 @@
 							<br>
 							<span>Pay the Company/Biller:</span>
 							<select class="form-control">
-								<option>Select a Company/Biller</option>
-								<option>Skycable</option>
-								<option>PLDT</option>
-								<option>Maynilad</option>
+								<option value="">Select a Company/Biller</option>
+								<% ArrayList<Account> billersList = (ArrayList<Account>)request.getAttribute("billersList"); %>
+								<% for(int i = 0; i < billersList.size(); i++) { %>
+									<option value='<%=billersList.get(i).getIdAccount() %>'><%=billersList.get(i).getName() %></option>
+								<% } %>
 							</select>
 			
 							<br>

@@ -53,7 +53,7 @@
 						    <a class="btn btn-primary active" href="transaction-history.jsp">View Transaction History</a>
 							<a class="btn btn-default" href="viewbalance">View Balance</a>
 							<a class="btn btn-default" href="fundTransferAccts">Fund Transfer</a>
-							<a class="btn btn-default" href="bills-pay.jsp">Bills Payment</a>
+							<a class="btn btn-default" href="BillsPayment">Bills Payment</a>
 							<a class="btn btn-default" href="sendMoneyAccts">Send Money</a>
 							<a class="btn btn-default" href="manageaccounts">Manage Accounts</a>
 					</div>

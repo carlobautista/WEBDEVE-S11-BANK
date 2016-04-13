@@ -55,7 +55,7 @@
 						    <a class="btn btn-default" href="transaction-history.jsp">View Transaction History</a>
 							<a class="btn btn-default" href="viewbalance">View Balance</a>
 							<a class="btn btn-default" href="fundTransferAccts">Fund Transfer</a>
-							<a class="btn btn-default" href="bills-pay.jsp">Bills Payment</a>
+							<a class="btn btn-default" href="BillsPayment">Bills Payment</a>
 							<a class="btn btn-default" href="sendMoneyAccts">Send Money</a>
 							<a class="btn btn-primary active" href="manageaccounts">Manage Accounts</a>
 					</div>
@@ -91,6 +91,9 @@
 						</div>
 						<div class="container">
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">Add Savings Account</button>
+							<%if(session.getAttribute("username").equals("admin")){ // display the button%>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBillerModal">Add Biller</button>
+							<% } %>
 						</div>
 					</div>
 				</div>
@@ -128,13 +131,41 @@
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->	
+	
+	<div class="modal fade" tabindex="-1" role="dialog" id="addBillerModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Add Company/Biller</h4>
+	      </div>
+	      <form method="POST" action="AddBiller">
+		      <div class="modal-body">
+		        <div class="form-group">
+		        	<label for="accountName">Name</label>
+		        	<input name="accountName" id="accountName" type="text" class="form-control" placeholder="Input Account Name Here" required>
+		        </div>
+		        <div class="form-group">
+		        	<label for="accountBalance">Balance</label>
+		        	<div class="input-group">
+						<span class="input-group-addon">PHP</span>
+						<input name="accountBalance" id="accountBalance" type="text" class="form-control" placeholder="Insert Amount Here" required>
+					</div>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="submit" class="btn btn-primary">Confirm</button>
+		      </div>
+	      </form>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->	
 		
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     	
-	<script type="text/javascript">
-	</script>
 </body>
 </html>

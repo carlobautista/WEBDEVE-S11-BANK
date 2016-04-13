@@ -2,7 +2,9 @@ package peso.services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import peso.db.DBConnection;
 import peso.dto.Account;
@@ -30,6 +32,31 @@ public class AccountDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	public static ArrayList<Account> getBillers(){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		
+		try {
+			ps = conn.prepareStatement("SELECT * FROM account WHERE type='biller'");
+			
+			ArrayList<Account> billersList = new ArrayList<>();
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				billersList.add(new Account(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+			}
+			rs.close();
+			ps.close();
+			conn.close();
+			return billersList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return null;
 		}
 	}
 }
