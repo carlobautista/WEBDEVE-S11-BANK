@@ -32,13 +32,13 @@
 									</li>
 									 -->
 									 <li>
-										<input type="text" id="username" name="username" class="loginMargin form-control" placeholder="E-Mail Address" required>
+										<input id="username" type="text" id="username" name="username" class="loginMargin form-control" placeholder="E-Mail Address" required>
 									</li>
 									<li>
-										<input type="password" id="password" name="password" class="loginMargin form-control" placeholder="Password" required>
+										<input id="password" type="password" id="password" name="password" class="loginMargin form-control" placeholder="Password" required>
 									</li>
 									<li>
-										<button type="button" class="loginMargin btn btn-primary rightBtn" data-toggle="modal" data-target="#myModal">Login</button>
+										<button id="prepareOTP" type="button" class="loginMargin btn btn-primary rightBtn">Login</button>
 									</li>
 								</ul>
 							</form>
@@ -117,24 +117,48 @@
 			
 		<!-- Modal for code confirmation -->
 		
-		<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+		<div id="otpModal" class="modal fade" tabindex="-1" role="dialog">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title">One-Time Password(OTP)</h4>
 		      </div>
+		      
 		      <div class="modal-body">
-		        <p>To further ensure the security of your Online Banking transactions, you will be receiving a One-Time Password (OTP) via your email.</p>
+		      	<div class="alert alert-success" role="alert">
+		        	Your OTP has been sent to your email.
+		        </div>
 		        <div class="input-group">
 					<span class="input-group-addon">OTP</span>
-					<input id="OTP" type="text" class="form-control" placeholder="Insert OTP"></input>
+					<input id="OTP" type="text" class="form-control" placeholder="Insert OTP here"></input>
 				</div>	
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary" onclick="login()">Proceed</button>
+		        <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Close</button>
+		        <button id="validateOTP" type="button" class="btn btn-primary">Proceed</button>
 		      </div>
+		      
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<div id="otpWaitModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Generating One Time Password Please Wait.</h4>
+		      </div>
+		      
+		      <div class="modal-body">
+		        <div>
+		        <p>To further ensure the security of your Online Banking transactions, you will be receiving a One-Time Password (OTP) via your email.</p>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		      
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
@@ -144,51 +168,6 @@
 		<script src="jquery-2.1.1.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-
-function login() {
-				var otp = $("#OTP").val();
-				if( otp == 12345678){
-					alert("Login Successful");
-					document.getElementById("loginform").submit();
-				}
-				else {
-					alert("Wrong OTP Please try again.")
-				}
-			}
-
-			// When the page is fully loaded...
-$(document).ready(function() {
-	
-	// Add an event that triggers when ANY button
-	// on the page is clicked...
-    $("button").click(function(event) {
-    	
-    	// Get the button id, as we will pass it to the servlet
-    	// using a GET request and it will be used to get different
-    	// results (bands OR bands and albums).
-    	var buttonID = event.target.id;
-    	
-    	// Basic JQuery Ajax GET request. We need to pass 3 arguments:
-    	// 		1. The servlet url that we will make the request to.
-    	//		2. The GET data (in our case just the button ID).
-    	//		3. A function that will be triggered as soon as the request is successful.
-    	// Optionally, you can also chain a method that will handle the possibility
-    	// of a failed request.
-    	$.get('DBRetrievalServlet', {"button-id": buttonID},
-            function(resp) { // on sucess
-    			// We need 2 methods here due to the different ways of 
-    			// handling a JSON object.
-    			if (buttonID === "bands")
-    				printBands(resp);
-    			else if (buttonID === "bands-albums")
-    				printBandsAndAlbums(resp); 
-            })
-            .fail(function() { // on failure
-                alert("Request failed.");
-            });
-    });  
-});
-		</script>
+		<script src="js/login.js"></script>
 	</body>
 </html>

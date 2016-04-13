@@ -347,7 +347,7 @@ public class UserDAO {
 		}
 	}
 	
-	public static String generateOTP(String username){
+	public static void generateOTP(String username){
 		String AB = "0123456789";
 		int length = 8;
 			
@@ -363,9 +363,64 @@ public class UserDAO {
 		String otp = stringBuilder.toString();
 		stringBuilder.setLength(0);
 		
-		storeOTP(otp, username);
-		eMailOTP(otp, username);
+		if(!isThereOTPGenerated(username)){
+			storeOTP(otp, username);
+			eMailOTP(otp, username);
+		}
+	}
+	
+	public static boolean isThereOTPGenerated(String username){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		boolean otpGenerated = false;
 		
-		return otp;
+		try{
+			ps = conn.prepareStatement("SELECT * "
+					+"FROM otp "
+					+"WHERE username = ? AND expiry_date > NOW()");
+			ps.setString(1, username);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				otpGenerated = true;
+			}
+			
+			rs.close();
+			ps.close();
+			conn.close();
+			
+			return otpGenerated;
+		} catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean validateOTP(String username,String OTP){
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps;
+		boolean otpValidated = false;
+		
+		try{
+			ps = conn.prepareStatement("SELECT * "
+					+"FROM otp "
+					+"WHERE username = ? AND otp = ? AND expiry_date > NOW()");
+			ps.setString(1, username);
+			ps.setString(2, OTP);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				otpValidated = true;
+			}
+			rs.close();
+			ps.close();
+			conn.close();
+			return otpValidated;
+		} catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}
 	}
 }
